@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie App v2.0</title>
+<<<<<<< HEAD:index.html
+=======
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+>>>>>>> 9b174f4ac6d6f983c6e0b4f6a40ed4d3435fa8e3:index_v2.html
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -60,6 +69,23 @@
 
 
 
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+    authDomain: "movieapp-3365a.firebaseapp.com",
+    databaseURL: "https://movieapp-3365a.firebaseio.com",
+    projectId: "movieapp-3365a",
+    storageBucket: "movieapp-3365a.appspot.com",
+    messagingSenderId: "845732737286",
+    appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+    measurementId: "G-HTVFL47E1X"
+  }
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth()</script>
 
     
     <script src="main.js"></script>

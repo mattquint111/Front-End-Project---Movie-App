@@ -6,20 +6,11 @@
 
 body {
     background: #1f252b;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
 }
 
 .navbar {
     background: #13161a;
     color: #46bcf4;
-}
-
-.navbar-toggler {
-    color: #46bcf4;
-
 }
 
 .navbar-brand:hover {
@@ -42,25 +33,9 @@ body {
     justify-content: flex-end;
 }
 
-.main-body{
-    display: flex;
-    flex-direction: column;
-
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 10vh;
+    background: #2e373f
 }
-
-.playlist {
-    margin-top: 20px;
-    color: #52bad5;
-    overflow: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    height: 375px;
-}
-
-.movie-object {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-}
-

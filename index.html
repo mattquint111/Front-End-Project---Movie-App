@@ -1,128 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App v2.0</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <!-- Top Navigation Menu -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">MovieApp</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie App v2.0</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="creator.html">My Lists</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            id="searchTxt"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
+<body>
+  <!-- Top Navigation Menu -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">MovieApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="playlistsContainer">
-      <div class="playlist">
-        <h1 class="playlistLabel">Now Playing</h1>
-        <div class="playlistContent" id="nowPlayingList"></div>
-      </div>
-      <div class="movieContent" id="nowPlayingContent"></div>
-
-      <div class="playlist">
-        <h1 class="playlistLabel">Popular</h1>
-        <div class="playlistContent" id="popularList"></div>
-      </div>
-      <div class="movieContent" id="popularContent"></div>
-
-      <div class="playlist">
-        <h1 class="playlistLabel">Top Rated</h1>
-        <div class="playlistContent" id="topRatedList"></div>
-      </div>
-      <div class="movieContent" id="topRatedContent"></div>
-
-      <div class="playlist">
-        <h1 class="playlistLabel">Upcoming</h1>
-        <div class="playlistContent" id="upcomingList"></div>
-      </div>
-      <div class="movieContent" id="upcomingContent"></div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Lists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="creator.html">List Maker</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchTxt" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </form>
     </div>
+  </nav>
 
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
-        authDomain: "movieapp-3365a.firebaseapp.com",
-        databaseURL: "https://movieapp-3365a.firebaseio.com",
-        projectId: "movieapp-3365a",
-        storageBucket: "movieapp-3365a.appspot.com",
-        messagingSenderId: "845732737286",
-        appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
-        measurementId: "G-HTVFL47E1X",
-      };
-      firebase.initializeApp(firebaseConfig);
+  <div class="playlistsContainer">
+    <div class="playlist">
+      <h1 class="playlistLabel">Now Playing</h1>
+      <div class="playlistContent" id="nowPlayingList"></div>
+    </div>
+    <div class="movieContent" id="nowPlayingContent"></div>
 
-      const auth = firebase.auth();
-    </script>
+    <div class="playlist">
+      <h1 class="playlistLabel">Popular</h1>
+      <div class="playlistContent" id="popularList"></div>
+    </div>
+    <div class="movieContent" id="popularContent"></div>
 
-    <script src="main.js"></script>
+    <div class="playlist">
+      <h1 class="playlistLabel">Top Rated</h1>
+      <div class="playlistContent" id="topRatedList"></div>
+    </div>
+    <div class="movieContent" id="topRatedContent"></div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <div class="playlist">
+      <h1 class="playlistLabel">Upcoming</h1>
+      <div class="playlistContent" id="upcomingList"></div>
+    </div>
+    <div class="movieContent" id="upcomingContent"></div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+      authDomain: "movieapp-3365a.firebaseapp.com",
+      databaseURL: "https://movieapp-3365a.firebaseio.com",
+      projectId: "movieapp-3365a",
+      storageBucket: "movieapp-3365a.appspot.com",
+      messagingSenderId: "845732737286",
+      appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+      measurementId: "G-HTVFL47E1X",
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+  </script>
+
+  <script src="main.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

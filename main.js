@@ -48,10 +48,7 @@ document.onclick = function (event) {
     console.log(target)
   
     if (target.tagName.toLowerCase() === "img") {
-      
-      console.log(target.id)
-    //   const section = target.parentElement;
-    //   const content = section.nextElementSibling;
-    //   content.classList.add("content-display");
+      const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling
+      movieContent.classList.toggle("content-display")
     }
 }

@@ -46,7 +46,7 @@ function createPlaylist(playlistUrl, playlistName) {
 // Event Delegation
 document.onclick = function (event) {
     const target = event.target;
-    console.log(target)
+
   
     if (target.tagName.toLowerCase() === "img") {
       const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling

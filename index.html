@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App v2.0</title>
+    <title>Movie App</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -14,12 +14,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <!-- Top Navigation Menu -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg  ">
       <a class="navbar-brand" href="#">MovieApp</a>
       <button
         class="navbar-toggler"
@@ -30,7 +31,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,13 +42,13 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
+            <a class="nav-link" href="#">Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">My Lists</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link 3</a>
+            <a class="nav-link" href="#">Create Playlist</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -58,7 +59,7 @@
             aria-label="Search"
             id="searchTxt"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button class="btn btn-outline-success my-2 my-sm-0" id="submitButton" type="submit">
             Search
           </button>
         </form>

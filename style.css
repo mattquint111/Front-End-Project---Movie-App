@@ -5,16 +5,45 @@
 }
 
 body {
-    background-color: #36333e;
+    background: #1a1a2e;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+nav {
+    background-color: #16213e;
+}
+nav a{
+    color: #f50040;
+}
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    height: 10vh;
-    background: #2e373f
+.navbar-toggler {
+    border: 1px solid red;
+    outline: none;
+}
+.navbar-toggler:hover {
+    color: #bf00ff;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.fa-bars {
+    color: #f50040;
+}
+
+#submitButton {
+    color: #f50040;
+    border: 1px solid #f50040;
+    border-radius: 20px;
+}
+#submitButton:hover {
+    background: #16213e;
+    color: #bf00ff;
+    border: 1px solid #bf00ff;
 }
 
 
@@ -35,11 +64,11 @@ body {
 }
 
 .playlistLabel {
-    color: #46bcf4;
+    color: #e92748;
 }
 
 .playlistContent {
-    color: #46bcf4;
+    color: #e94560;
     display: flex;
     top: 100px;
     flex-wrap: nowrap;
@@ -60,7 +89,7 @@ body {
     cursor: pointer;
 }
 .moviePoster:hover {
-    border: 3px solid #6ad5fc
+    border: 3px solid #ff0099
 }
 
 .movieTitle {
@@ -78,7 +107,7 @@ body {
     height: 300px;
     width: 80%;
     display: none;
-    background: #36404a;
+    background: #16213e;
     margin: 10px;
     border-radius: 10px;
 }

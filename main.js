@@ -1,5 +1,42 @@
-// initial constants
+// initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
-const path_nowPlaying = "/movie/now_playing";
+const nowPlayingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
+const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`
+const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
 
+
+// create homepage playlists
+createPlaylist(nowPlayingUrl, "nowPlaying")
+createPlaylist(popularUrl, "popular")
+createPlaylist(topRatedUrl, "topRated")
+createPlaylist(upcomingUrl, "upcoming")
+
+
+// FUNCTIONS
+function createPlaylist(playlistUrl, playlistName) {
+    fetch(playlistUrl)
+    .then(res => res.json())
+    .then(data => {
+        //array of movie objects
+        const movieArray = data.results
+        
+        const playList = document.getElementById(`${playlistName}List`)
+        const movieObject = document.createElement('div')
+        movieObject.classList.add('movieObject')
+
+        for (let i = 0; i < movieArray.length; i++) {
+            let movie = movieArray[i]
+            let movieData = `
+            <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" movie-id=${movie.id}>
+            <span class="movieTitle">${movie.original_title}</span>
+            <span class="movieReleaseDate">${movie.release_date}</span>
+            `
+            const movieObject = document.createElement('div')
+            movieObject.classList.add('movieObject')
+            movieObject.innerHTML = movieData
+            playList.appendChild(movieObject)
+        }
+    })
+}

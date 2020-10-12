@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App v2.0</title>
+    <title>Movie App</title>
 <<<<<<< HEAD:index.html
 =======
     <link
@@ -61,10 +61,32 @@
       </div>
     </div>
 
-    <div class="main-body">
-      <div class="playlist" id='nowPlayingList'></div>
+    <div class="playlistsContainer">
 
-      <div class="playlist" id='popularList'></div>
+      <div class="playlist">
+        <h1 class="playlistLabel">Now Playing</h1>
+        <div class="playlistContent" id='nowPlayingList'></div>
+      </div>
+      <div class='movieContent content-display' id="nowPlayingContent"></div>
+
+      <div class="playlist">
+        <h1 class="playlistLabel">Popular</h1>
+        <div class="playlistContent" id='popularList'></div>
+      </div>
+      <div class='movieContent content-display' id="popularContent"></div>
+
+      <div class="playlist">
+        <h1 class="playlistLabel">Top Rated</h1>
+        <div class="playlistContent" id='topRatedList'></div>
+      </div>
+      <div class='movieContent content-display' id="topRatedContent"></div>
+
+      <div class="playlist">
+        <h1 class="playlistLabel">Upcoming</h1>
+        <div class="playlistContent" id='upcomingList'></div>
+      </div>
+      <div class='movieContent content-display' id="upcomingContent"></div>
+     
     </div>
 
 

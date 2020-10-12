@@ -29,7 +29,7 @@ function createPlaylist(playlistUrl, playlistName) {
         for (let i = 0; i < movieArray.length; i++) {
             let movie = movieArray[i]
             let movieData = `
-            <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" movie-id=${movie.id}>
+            <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
             <span class="movieTitle">${movie.original_title}</span>
             <span class="movieReleaseDate">${movie.release_date}</span>
             `
@@ -39,4 +39,19 @@ function createPlaylist(playlistUrl, playlistName) {
             playList.appendChild(movieObject)
         }
     })
+}
+
+
+// Event Delegation
+document.onclick = function (event) {
+    const target = event.target;
+    console.log(target)
+  
+    if (target.tagName.toLowerCase() === "img") {
+      
+      console.log(target.id)
+    //   const section = target.parentElement;
+    //   const content = section.nextElementSibling;
+    //   content.classList.add("content-display");
+    }
 }

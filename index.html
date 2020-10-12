@@ -10,7 +10,7 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style_v2.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
@@ -64,6 +64,23 @@
 
 
 
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+    authDomain: "movieapp-3365a.firebaseapp.com",
+    databaseURL: "https://movieapp-3365a.firebaseio.com",
+    projectId: "movieapp-3365a",
+    storageBucket: "movieapp-3365a.appspot.com",
+    messagingSenderId: "845732737286",
+    appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+    measurementId: "G-HTVFL47E1X"
+  }
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth()</script>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

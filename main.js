@@ -47,10 +47,10 @@ function createPlaylist(playlistUrl, playlistName) {
             <div class="posterContainer">
                 <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
                 <div class="listButtons">
-                    <i class="far fa-eye"></i>
-                    <i class="fas fa-heart"></i>
-                    <i class="fas fa-plus"></i>
-                    <i class="fas fa-ellipsis-h"></i>
+                    <i id="watchedBtn" class="far fa-eye"></i>
+                    <i id="favoritesBtn" class="fas fa-heart"></i>
+                    <i id="watchLaterBtn" class="fas fa-plus"></i>
+                    <i id="playlistsBtn" class="fas fa-ellipsis-h"></i>
                 </div>
             </div>
             <div class="movieDataContainer">
@@ -105,8 +105,5 @@ document.onclick = function (event) {
         movieSpotlight(topRatedUrl, 'topRatedContent')
         movieSpotlight(upcomingUrl, 'upcomingContent')
 
-        //   const section = target.parentElement;
-        //   const content = section.nextElementSibling;
-        //   content.classList.add("content-display");
     }
 }

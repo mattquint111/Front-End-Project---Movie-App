@@ -5,33 +5,10 @@
 }
 
 body {
-    background: #1f252b;
+    background-color: #36333e;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.navbar {
-    background: #13161a;
-    color: #46bcf4;
-}
-
-.navbar-brand:hover {
-    color: #61cdff;
-}
-
-.nav-link, .navbar-brand {
-    color:#35a5d8;
-}
-
-.nav-link {
-    margin-right: 1em;
-}
-
-.nav-link:hover {
-    color: #61cdff
-}
-
-.navbar-collapse {
-    justify-content: flex-end;
-}
 
 .footer {
     position: absolute;

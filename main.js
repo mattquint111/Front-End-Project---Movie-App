@@ -1,4 +1,3 @@
-
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
@@ -18,18 +17,18 @@ createPlaylist(upcomingUrl, "upcoming")
 // FUNCTIONS
 function createPlaylist(playlistUrl, playlistName) {
     fetch(playlistUrl)
-    .then(res => res.json())
-    .then(data => {
-        //array of movie objects
-        const movieArray = data.results
-        
-        const playList = document.getElementById(`${playlistName}List`)
-        const movieObject = document.createElement('div')
-        movieObject.classList.add('movieObject')
+        .then(res => res.json())
+        .then(data => {
+            //array of movie objects
+            const movieArray = data.results
 
-        for (let i = 0; i < movieArray.length; i++) {
-            let movie = movieArray[i]
-            let movieData = `
+            const playList = document.getElementById(`${playlistName}List`)
+            const movieObject = document.createElement('div')
+            movieObject.classList.add('movieObject')
+
+            for (let i = 0; i < movieArray.length; i++) {
+                let movie = movieArray[i]
+                let movieData = `
             <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
             <span class="movieTitle">${movie.original_title}</span>
             <span class="movieReleaseDate">${movie.release_date}</span>
@@ -42,7 +41,7 @@ function createPlaylist(playlistUrl, playlistName) {
 
         })
 }
-
+const signup = document.getElementById('signup')
 
 
 // Event Delegation
@@ -63,7 +62,7 @@ document.onclick = function (event) {
             //filter array for id
             let specificMovie = resultsArray.filter(item => item.id == target.id)
             const highlight = document.getElementById(spotlight)
-            
+
             highlight.innerHTML = `
             <div class = "movie-spotlight">
                 <div id = "spotlight-title">${specificMovie[0].title}</div>
@@ -72,9 +71,9 @@ document.onclick = function (event) {
                 <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
             </div>
             `
-        
+
             console.log(resultsArray)
-        
+
         }
         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
         movieSpotlight(popularUrl, 'popularContent')
@@ -86,3 +85,99 @@ document.onclick = function (event) {
         //   content.classList.add("content-display");
     }
 }
+//--------------Login modal-------------------------
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("signup");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+//----------Authentication stuff -----------------
+const usernameInput = document.getElementById('username-input')
+const passwordInput = document.getElementById('password-input')
+const loginForm = document.getElementById('login-form')
+const signUpForm = document.getElementById('signup-button')
+
+firebase.auth().onAuthStateChanged(function (user) {
+    let playlistContainer = document.getElementById('playlist-container')
+    if (user) {
+        playlistContainer.style.display = "block"
+
+    }
+    else {
+        playlistContainer.style.display = "none"
+        console.log('no users signed in')
+    }
+
+    const signUp = (e) => {
+        e.preventDefault()
+        const email = usernameInput.value
+        const password = passwordInput.value
+
+
+        //signup method
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(cred => {
+                console.log(cred.user)
+                signUpForm.reset()
+            })
+
+            .catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
+    }
+
+    //signIn method
+    const signIn = (e) => {
+        e.preventDefault()
+        const email = usernameInput.value
+        const password = passwordInput.value
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(cred => {
+                console.log(cred.user)
+            })
+            .catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
+    }
+
+
+    //logout method
+    
+    const logout = document.getElementById('logout');
+    logout.addEventListener('click', async(e)=>{
+        e.preventDefault()
+        await auth.signOut()
+        console.log('user signed out')
+    })
+    
+   loginForm.addEventListener("submit", signUp)
+    signUpForm.addEventListener("submit", signIn)   
+})
+
+
+

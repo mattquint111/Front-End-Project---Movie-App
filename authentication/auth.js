@@ -1,3 +1,4 @@
+/*
 const usernameInput = document.getElementById('username-input')
 const passwordInput = document.getElementById('password-input')
 const loginForm = document.getElementById('login-form')
@@ -59,10 +60,11 @@ logout.addEventListener('click', async(e)=>{
     await auth.signOut()
     console.log('user signed out')
 })
-*/
-})
 
+})
 
 
 loginForm.addEventListener("submit", signUp)
 signUpForm.addEventListener("submit", signIn)
+
+*/

@@ -63,136 +63,95 @@
   <div class='mainContainer'>
 
     <div class="searchContainer">
-
+      
       <div class="searchBar">
-        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off"
-          autocomplete="off" spellcheck="false">
+        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off" autocomplete="off" spellcheck="false">
         <button type='submit' id="submitButton" value='Submit'>Submit</button>
       </div>
-
+      
       <div class="playlist" id="searchContainer">
         <div class="searchPlaylistContent" id='searchedList'></div>
       </div>
       <div class="movieContent" id="searchedContent"></div>
-
-
+    
     </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">My Lists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link 3</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchTxt">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
-      </form>
-    </div>
-    </nav>
+    <div class="playlistsContainer">
 
-    <!---------------------Playlists HTML------------------->
-    <div id="playlist-container">
+      <div class="playlist">
+        <h1 class="playlistLabel">Now Playing</h1>
+        <div class="playlistContent" id="nowPlayingList"></div>
+      </div>
+      <div class="movieContent" id="nowPlayingContent"></div>
+
+      <div class="playlist">
+        <h1 class="playlistLabel">Popular</h1>
+        <div class="playlistContent" id="popularList"></div>
+      </div>
+      <div class="movieContent" id="popularContent"></div>
+
       <div class="playlist">
         <h1 class="playlistLabel">Top Rated</h1>
         <div class="playlistContent" id="topRatedList"></div>
-
-
-
-
-
       </div>
+      <div class="movieContent" id="topRatedContent"></div>
 
-      <div class="playlistsContainer">
-
-        <div class="playlist">
-          <h1 class="playlistLabel">Now Playing</h1>
-          <div class="playlistContent" id="nowPlayingList"></div>
-        </div>
-        <div class="movieContent" id="nowPlayingContent"></div>
-
-        <div class="playlist">
-          <h1 class="playlistLabel">Popular</h1>
-          <div class="playlistContent" id="popularList"></div>
-        </div>
-        <div class="movieContent" id="popularContent"></div>
-
-        <div class="playlist">
-          <h1 class="playlistLabel">Top Rated</h1>
-          <div class="playlistContent" id="topRatedList"></div>
-        </div>
-        <div class="movieContent" id="topRatedContent"></div>
-
-        <div class="playlist">
-          <h1 class="playlistLabel">Upcoming</h1>
-          <div class="playlistContent" id="upcomingList"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div id="web-app">
-        <div id="container">
-          <form id="login-form">
-            <label for="username">Username: </label>
-            <input class=login-input id="username-input" type="email" required>
-            <label for="password">Password: </label>
-            <input class=login-input id="password-input" type="password" required>
-            <button id="login-button">Login</button>
-            <button id="signup-button">Sign up</button>
-          </form>
-          <p>Not a user? Join today!</p>
-        </div>
+      <div class="playlist">
+        <h1 class="playlistLabel">Upcoming</h1>
+        <div class="playlistContent" id="upcomingList"></div>
       </div>
     </div>
 
   </div>
-  <!------------------------------Firebase Scripts BELOW------------------------------------>
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
-      authDomain: "movieapp-3365a.firebaseapp.com",
-      databaseURL: "https://movieapp-3365a.firebaseio.com",
-      projectId: "movieapp-3365a",
-      storageBucket: "movieapp-3365a.appspot.com",
-      messagingSenderId: "845732737286",
-      appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
-      measurementId: "G-HTVFL47E1X",
-    };
-    firebase.initializeApp(firebaseConfig);
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-    const auth = firebase.auth();
-    var db = firebase.firestore()</script>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="web-app">
+          <div id="container">
+            <form id="login-form">
+              <label for="username">Username: </label>
+              <input class=login-input id="username-input" type="email" required>
+              <label for="password">Password: </label>
+              <input class=login-input id="password-input" type="password" required>
+              <button id="login-button">Login</button>
+              <button id="signup-button">Sign up</button>
+            </form>
+            <p>Not a user? Join today!</p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <!------------------------------Firebase Scripts BELOW------------------------------------>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+        authDomain: "movieapp-3365a.firebaseapp.com",
+        databaseURL: "https://movieapp-3365a.firebaseio.com",
+        projectId: "movieapp-3365a",
+        storageBucket: "movieapp-3365a.appspot.com",
+        messagingSenderId: "845732737286",
+        appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+        measurementId: "G-HTVFL47E1X",
+      };
+      firebase.initializeApp(firebaseConfig);
+  
+      const auth = firebase.auth();
+      var db = firebase.firestore()</script>
 
-  <!------------------------------Firebase Scripts ABOVE------------------------------------>
-
-  <!------------------------------Authentication Scripts------------------------------------>
-  <script src="authentication/auth.js"></script>
-  <!------------------------------Authentication Scripts------------------------------------>
 
 
-  <script type="module" src="main.js"></script>
+  const auth = firebase.auth();
+  </script>
 
-  <!----------------------------------Bootstrap Scripts------------------------------------->
+  <script type = "module" src="main.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -203,8 +162,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <!----------------------------------Bootstrap Scripts------------------------------------->
-
 </body>
 
 </html>

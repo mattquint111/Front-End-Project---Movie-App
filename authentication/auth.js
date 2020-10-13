@@ -28,7 +28,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(cred => {
                 console.log(cred.user)
-                signUpForm.reset()
             })
 
             .catch(function (error) {

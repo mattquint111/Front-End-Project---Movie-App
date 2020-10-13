@@ -1,73 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <!-- Top Navigation Menu -->
+    <nav class="navbar navbar-expand-lg  ">
+      <a class="navbar-brand" href="#">MovieApp</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie App</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <!-- Top Navigation Menu -->
-  <nav class="navbar navbar-expand-lg  ">
-    <a class="navbar-brand" href="#">MovieApp</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">My Lists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="creator.html">Create Playlist</a>
-        </li>
-      </ul>
-
-      <!-- <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            id="searchTxt"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" id="submitButton" type="submit">
-            Search
-          </button>
-        </form> -->
-    </div>
-    <button id="signup" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      Signup
-    </button>
-    <button id="logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      logOut
-    </button>
-  </nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Lists</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="creator.html">Create Playlist</a>
+          </li>
+        </ul>
+      </div>
+      <button id="signup" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Signup
+      </button>
+      <button id="logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        logOut
+      </button>
+    </nav>
 
   <div class='mainContainer'>
 
@@ -80,7 +71,7 @@
       </div>
 
       <div class="playlist" id="searchContainer">
-        <div class="playlistContent" id='searchedList'></div>
+        <div class="searchPlaylistContent" id='searchedList'></div>
       </div>
       <div class="movieContent" id="searchedContent"></div>
 

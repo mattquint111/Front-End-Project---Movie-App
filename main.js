@@ -14,6 +14,8 @@ const submitButton = document.getElementById('submitButton')
 
 
 submitButton.addEventListener('click', function() {
+    let searchedList = document.getElementById("searchedList")
+    searchedList.innerHTML = ''
     const movieName = searchInput.value;
     const searchUrl = searchMovieUrl + movieName
 
@@ -46,21 +48,31 @@ const fetchMovieData = async (playlistUrl) => {
 // FUNCTIONS
 function createPlaylist(playlistUrl, playlistName) {
     fetch(playlistUrl)
-        .then(res => res.json())
-        .then(data => {
-            //array of movie objects
-            const movieArray = data.results
+    .then(res => res.json())
+    .then(data => {
+        //array of movie objects
+        const movieArray = data.results
+        
+        const playList = document.getElementById(`${playlistName}List`)
+        const movieObject = document.createElement('div')
+        movieObject.classList.add('movieObject')
 
-            const playList = document.getElementById(`${playlistName}List`)
-            const movieObject = document.createElement('div')
-            movieObject.classList.add('movieObject')
-
-            for (let i = 0; i < movieArray.length; i++) {
-                let movie = movieArray[i]
-                let movieData = `
-            <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
-            <span class="movieTitle">${movie.original_title}</span>
-            <span class="movieReleaseDate">${movie.release_date}</span>
+        for (let i = 0; i < movieArray.length; i++) {
+            let movie = movieArray[i]
+            let movieData = `
+            <div class="posterContainer">
+                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+                <div class="listButtons">
+                    <i id="watchedBtn" class="far fa-eye"></i>
+                    <i id="favoritesBtn" class="fas fa-heart"></i>
+                    <i id="watchLaterBtn" class="fas fa-plus"></i>
+                    <i id="playlistsBtn" class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="movieDataContainer">
+                <span class="movieTitle">${movie.original_title}</span>
+                <span class="movieReleaseDate">${movie.release_date}</span>
+            </div>
             `
                 const movieObject = document.createElement('div')
                 movieObject.classList.add('movieObject')
@@ -114,9 +126,6 @@ document.onclick = function (event) {
         movieSpotlight(upcomingUrl, 'upcomingContent')
         
 
-        //   const section = target.parentElement;
-        //   const content = section.nextElementSibling;
-        //   content.classList.add("content-display");
     }
 }
 //--------------Login modal-------------------------

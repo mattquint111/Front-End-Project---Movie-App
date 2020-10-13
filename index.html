@@ -1,57 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <!-- Top Navigation Menu -->
-    <nav class="navbar navbar-expand-lg  ">
-      <a class="navbar-brand" href="#">MovieApp</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Lists</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="creator.html">Create Playlist</a>
-          </li>
-        </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
+<body>
+  <!-- Top Navigation Menu -->
+  <nav class="navbar navbar-expand-lg  ">
+    <a class="navbar-brand" href="#">MovieApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Lists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="creator.html">Create Playlist</a>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
             type="search"
@@ -63,23 +48,24 @@
             Search
           </button>
         </form> -->
-      </div>
-    </nav>
+    </div>
+  </nav>
 
   <div class='mainContainer'>
 
     <div class="searchContainer">
-      
+
       <div class="searchBar">
-        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off" autocomplete="off" spellcheck="false">
+        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off"
+          autocomplete="off" spellcheck="false">
         <button type='submit' id="submitButton" value='Submit'>Submit</button>
       </div>
-      
+
       <div class="playlist" id="searchContainer">
         <div class="playlistContent" id='searchedList'></div>
       </div>
       <div class="movieContent" id="searchedContent"></div>
-    
+
     </div>
 
     <div class="playlistsContainer">
@@ -109,7 +95,7 @@
     </div>
 
   </div>
-    
+
 
 
 

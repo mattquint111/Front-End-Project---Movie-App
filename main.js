@@ -10,12 +10,7 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 const searchInput = document.getElementById("inputValue")
 const submitButton = document.getElementById("submitButton")
 
-/* submitButton.addEventListener("click", function () {
-   const movieName = searchInput.value
-   const searchUrl = searchMovieUrl + movieName
-   createPlaylist(searchUrl, "searched")
-   searchInput.value = ""
-}) */
+
 
 // listener for List Builder button
 let listNameTxt = document.getElementById("listNameTxt")
@@ -23,19 +18,16 @@ let listDescrTxt = document.getElementById("listDescrTxt")
 let submitListInfoBtn = document.getElementById("submitListInfoBtn")
 let listBuilderInfoDiv = document.getElementById("listBuilderInfoDiv")
 let addFilmsDiv = document.getElementById("addFilmsDiv")
+let navbar = document.getElementsByClassName("navbar navbar-expand-lg")
 submitListInfoBtn.addEventListener("click", function () {
    listBuilderInfoDiv.style.display = "none"
    addFilmsDiv.style.display = "block"
+   let listName = listNameTxt.value
+   let listDescription = listDescrTxt.value
+   /* PLACEHOLDER ADD NAME AND DESCR TO PLAYLIST OBJECT */
+
 })
 
-/* // when you search through movies to add them to the playlist
-let addFilmsSearchTxt = document.getElementById("addFilmsSerchTxt")
-addFilmsSearchTxt.addEventListener("input", function () {
-   let search = addFilmsSearchTxt.value
-   let searchUrl = searchMovieUrl + search
-   createPlaylist(searchUrl, "searchResult")
-})
- */
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
 createPlaylist(popularUrl, "popular")

@@ -204,6 +204,29 @@ nav a{
 #listDescrTxt {
     background-color: #1a1a2e;
 }
+#addFilmsDiv {
+    width: 80%;
+    height: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+#addFilmsBarDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#addFilmsSearchTxt {
+    background-color: #1a1a2e;
+}
+#addFilmsToListBtn {
+    width: 30px;
+    height: 30px;
+    margin-left: 10%;
+    background-color: lightgreen;
+}
 /* Playlist Creator */
 
 

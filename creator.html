@@ -46,7 +46,30 @@
       </div>
    </nav>
 
+   <!-- Div that hold the inputs for list name and  -->
+   <div id="listBuilderInfoDiv">
+      <h1 id="listBuilderH1">List Builder</h1>
+      <div class="builderDiv">
+         <input type="text" placeholder="Add List Name" id="listNameTxt">
+      </div>
+      <div class="builderDiv">
+         <input type="text" placeholder="Add List Description" id="listDescrTxt">
+      </div>
+      <div class="builderDiv">
+         <button id="submitListInfoBtn">Add Items</button>
+      </div>
+   </div>
 
+   <!-- This menu pops out when they click add items -->
+   <!-- It holds the searched values and allows you to select them in a group before pressing the add button -->
+   <div id="addFilmsDiv">
+      <div id="addFilmsBarDiv">
+         <!-- PLACEHOLDER: back button of some kind, like an X, that goes back to the listBuilderInfoDiv so they can make changes-->
+         <input type="text" id="addFilmsSearchTxt" placeholder="Search Films, Tv Shows, and People">
+         <button id="addFilmsToListBtn">+</button> <!-- Make it a green plus button in CSS -->
+      </div>
+      <div id="searchResultsDiv"></div>
+   </div>
 
 
    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
@@ -68,7 +91,7 @@
       const auth = firebase.auth()</script>
 
    </script>
-   <script src="main.js"></script>
+   <script src="creator.js"></script>
 
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

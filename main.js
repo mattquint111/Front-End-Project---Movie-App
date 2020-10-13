@@ -24,6 +24,7 @@ submitButton.addEventListener('click', function() {
     searchInput.value = ''
 })
 
+
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
 createPlaylist(popularUrl, "popular")

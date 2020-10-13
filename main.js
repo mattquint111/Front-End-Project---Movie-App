@@ -8,6 +8,30 @@ const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiK
 const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
 
 
+// search movies
+const searchInput = document.getElementById("inputValue")
+const submitButton = document.getElementById('submitButton')
+
+
+submitButton.addEventListener('click', function() {
+    const movieName = searchInput.value;
+    const searchUrl = searchMovieUrl + movieName
+
+    createPlaylist(searchUrl, 'searched')
+
+    
+    searchInput.value = ''
+   
+})
+/*
+let addFilmsSearchTxt = document.getElementById("addFilmsSerchTxt")
+
+addFilmsSearchTxt.addEventListener("input", function() {
+    let search = addFilmsSearchTxt.value
+    let searchUrl = searchMovieUrl + search
+    createPlaylist(searchUrl,'searched')
+})*/
+
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
 createPlaylist(popularUrl, "popular")
@@ -52,8 +76,8 @@ const signup = document.getElementById('signup')
 // Event Delegation
 document.onclick = function (event) {
     const target = event.target;
-    console.log(target)
 
+  
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling
         movieContent.classList.toggle("content-display")

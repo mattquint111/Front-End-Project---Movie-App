@@ -51,64 +51,48 @@
       </div>
    </nav>
 
-   <div class='mainContainer'>
 
-      <div class="searchContainer">
 
-         <div class="searchBar">
-            <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off"
-               autocomplete="off" spellcheck="false">
-            <button type='submit' id="submitButton" value='Submit'>Submit</button>
-         </div>
-
-         <div class="playlist" id="searchContainer">
-            <div class="playlistContent" id='searchedList'></div>
-         </div>
-         <div class="movieContent" id="searchedContent"></div>
-
+   <!-- Div that hold the inputs for list name and description -->
+   <div id="listBuilderInfoDiv">
+      <h1 id="listBuilderH1" style="color: white;">List Builder</h1>
+      <div class="builderDiv">
+         <input type="text" placeholder="Add List Name" id="listNameTxt">
       </div>
-
-
-      <!-- Div that hold the inputs for list name and description -->
-      <div id="listBuilderInfoDiv">
-         <h1 id="listBuilderH1" style="color: white;">List Builder</h1>
-         <div class="builderDiv">
-            <input type="text" placeholder="Add List Name" id="listNameTxt">
-         </div>
-         <div class="builderDiv">
-            <input type="text" placeholder="Add List Description" id="listDescrTxt">
-         </div>
-         <div class="builderDiv">
-            <button id="submitListInfoBtn">Add Items</button>
-         </div>
+      <div class="builderDiv">
+         <input type="text" placeholder="Add List Description" id="listDescrTxt">
       </div>
-
-      <!-- This menu pops out when they click add items -->
-      <!-- It holds the searched values and allows you to select them in a group before pressing the add button -->
-      <div id="addFilmsDiv">
-         <div id="addFilmsBarDiv">
-            <!-- PLACEHOLDER: back button of some kind, like an X, that goes back to the listBuilderInfoDiv so they can make changes-->
-            <input type="text" id="addFilmsSearchTxt" placeholder="Search Films, Tv Shows, and People">
-            <button id="addFilmsToListBtn">+</button> <!-- Make it a green plus button in CSS -->
-         </div>
-         <div id="searchResultsDiv"></div>
+      <div class="builderDiv">
+         <button id="submitListInfoBtn">Add Items</button>
       </div>
+   </div>
 
+   <!-- This menu pops out when they click add items -->
+   <!-- It holds the searched values and allows you to select them in a group before pressing the add button -->
+   <div id="addFilmsDiv">
+      <div id="addFilmsBarDiv">
+         <!-- PLACEHOLDER: back button of some kind, like an X, that goes back to the listBuilderInfoDiv so they can make changes-->
+         <input type="text" id="addFilmsSearchTxt" placeholder="Search Films, Tv Shows, and People">
+         <button id="addFilmsToListBtn">+</button> <!-- Make it a green plus button in CSS -->
+      </div>
+      <div id="searchResultsDiv"></div>
+   </div>
 
+   <script>
       const auth = firebase.auth();
-      </script>
+   </script>
 
-      <script src="main.js"></script>
+   <script src="main.js"></script>
 
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-         crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-         crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-         crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>

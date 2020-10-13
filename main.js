@@ -24,7 +24,7 @@ submitButton.addEventListener('click', function() {
 
 let addFilmsSearchTxt = document.getElementById("addFilmsSerchTxt")
 
-addFilmsSearchTxt.addEventListener("input", function() {
+addFilmsSearchTxt.addEventListener('input', function() {
     let search = addFilmsSearchTxt.value
     let searchUrl = searchMovieUrl + search
     createPlaylist(searchUrl,'searched')

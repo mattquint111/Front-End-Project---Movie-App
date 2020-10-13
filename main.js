@@ -13,7 +13,11 @@ createPlaylist(popularUrl, "popular")
 createPlaylist(topRatedUrl, "topRated")
 createPlaylist(upcomingUrl, "upcoming")
 
-
+const fetchMovieData = async (playlistUrl) => {
+    const moviesresponse = await fetch(playlistUrl)
+    const moviesArray = await moviesresponse.json()
+    return moviesArray
+}
 // FUNCTIONS
 function createPlaylist(playlistUrl, playlistName) {
     fetch(playlistUrl)
@@ -54,13 +58,12 @@ document.onclick = function (event) {
         movieContent.classList.toggle("content-display")
 
         console.log(target.id)
-        const movieSpotlight = async (playlistUrl, spotlight) => {
-            const response = await (fetch(playlistUrl))
-            const movieArray = await response.json()
-            const resultsArray = movieArray.results
 
+        const movieSpotlight = async (playlistUrl, spotlight) => {
+            let data = await fetchMovieData(playlistUrl)
+            const resultsArray = await data.results
             //filter array for id
-            let specificMovie = resultsArray.filter(item => item.id == target.id)
+            const specificMovie = resultsArray.filter(item => item.id == target.id)
             const highlight = document.getElementById(spotlight)
 
             highlight.innerHTML = `
@@ -71,7 +74,6 @@ document.onclick = function (event) {
                 <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
             </div>
             `
-
             console.log(resultsArray)
 
         }
@@ -79,6 +81,7 @@ document.onclick = function (event) {
         movieSpotlight(popularUrl, 'popularContent')
         movieSpotlight(topRatedUrl, 'topRatedContent')
         movieSpotlight(upcomingUrl, 'upcomingContent')
+        
 
         //   const section = target.parentElement;
         //   const content = section.nextElementSibling;

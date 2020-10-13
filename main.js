@@ -163,11 +163,15 @@ document.onclick = function(e) {
     if (e.target.id === "playlistsBtn") {
         const movieId = e.target.parentElement.parentElement.firstElementChild.id
         getMovieObjectData(movieId)
+        
     }
 }
 
 function getMovieObjectData(movieId) {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            
+        })
 }

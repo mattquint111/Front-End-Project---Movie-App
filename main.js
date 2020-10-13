@@ -1,3 +1,4 @@
+import {authentication} from "./authentication/auth.js"
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
@@ -59,9 +60,11 @@ document.onclick = function (event) {
 
         console.log(target.id)
 
-        const movieSpotlight = async (playlistUrl, spotlight) => {
+        const movieSpotlight = async(playlistUrl, spotlight) => {
+            try {
             let data = await fetchMovieData(playlistUrl)
-            const resultsArray = await data.results
+        
+            const resultsArray = data.results
             //filter array for id
             const specificMovie = resultsArray.filter(item => item.id == target.id)
             const highlight = document.getElementById(spotlight)
@@ -75,6 +78,10 @@ document.onclick = function (event) {
             </div>
             `
             console.log(resultsArray)
+            }
+            catch(e){
+                console.log(`error : ${e}`)
+            }
 
         }
         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
@@ -113,74 +120,8 @@ window.onclick = function (event) {
     }
 }
 //----------Authentication stuff -----------------
-const usernameInput = document.getElementById('username-input')
-const passwordInput = document.getElementById('password-input')
-const loginForm = document.getElementById('login-form')
-const signUpForm = document.getElementById('signup-button')
+authentication()
 
-firebase.auth().onAuthStateChanged(function (user) {
-    let playlistContainer = document.getElementById('playlist-container')
-    if (user) {
-        playlistContainer.style.display = "block"
-
-    }
-    else {
-        playlistContainer.style.display = "none"
-        console.log('no users signed in')
-    }
-
-    const signUp = (e) => {
-        e.preventDefault()
-        const email = usernameInput.value
-        const password = passwordInput.value
-
-
-        //signup method
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(cred => {
-                console.log(cred.user)
-                signUpForm.reset()
-            })
-
-            .catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ...
-            });
-    }
-
-    //signIn method
-    const signIn = (e) => {
-        e.preventDefault()
-        const email = usernameInput.value
-        const password = passwordInput.value
-
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(cred => {
-                console.log(cred.user)
-            })
-            .catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ...
-            });
-    }
-
-
-    //logout method
-    
-    const logout = document.getElementById('logout');
-    logout.addEventListener('click', async(e)=>{
-        e.preventDefault()
-        await auth.signOut()
-        console.log('user signed out')
-    })
-    
-   loginForm.addEventListener("submit", signUp)
-    signUpForm.addEventListener("submit", signIn)   
-})
 
 
 

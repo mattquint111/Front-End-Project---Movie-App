@@ -78,7 +78,7 @@ document.onclick = function (event) {
 
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-        movieContent.classList.toggle("content-display")
+        movieContent.classList.add("content-display")
 
         const movieSpotlight = async (playlistUrl, spotlight) => {
             const response = await (fetch(playlistUrl))

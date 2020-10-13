@@ -35,17 +35,6 @@ nav a{
     color: #f50040;
 }
 
-/* #submitButton {
-    color: #f50040;
-    border: 1px solid #f50040;
-    border-radius: 20px;
-}
-#submitButton:hover {
-    background: #16213e;
-    color: #bf00ff;
-    border: 1px solid #bf00ff;
-} */
-
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -197,7 +186,8 @@ nav a{
     cursor: pointer;
 }
 .moviePoster:hover {
-    border: 3px solid #ff0099
+    border: 3px solid #ff0099;
+    transform: scale(1.2);
 }
 
 .movieTitle {
@@ -247,3 +237,10 @@ nav a{
     font-size: 3rem;
     margin-bottom: 1rem;
 }
+
+.movie-spotlight {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+

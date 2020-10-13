@@ -9,13 +9,14 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 // search movies
 const searchInput = document.getElementById("inputValue")
 const submitButton = document.getElementById("submitButton")
-
-submitButton.addEventListener("click", function () {
-   let searchedList = document.getElementById("searchedList")
-   searchedList.innerHTML = ""
-   const movieName = searchInput.value
-   const searchUrl = searchMovieUrl + movieName
-})
+if (submitButton) {
+   submitButton.addEventListener("click", function () {
+      let searchedList = document.getElementById("searchedList")
+      searchedList.innerHTML = ""
+      const movieName = searchInput.value
+      const searchUrl = searchMovieUrl + movieName
+   })
+}
 // listener for List Builder button
 let listNameTxt = document.getElementById("listNameTxt")
 let listDescrTxt = document.getElementById("listDescrTxt")
@@ -23,14 +24,15 @@ let submitListInfoBtn = document.getElementById("submitListInfoBtn")
 let listBuilderInfoDiv = document.getElementById("listBuilderInfoDiv")
 let addFilmsDiv = document.getElementById("addFilmsDiv")
 let navbar = document.getElementsByClassName("navbar navbar-expand-lg")
-submitListInfoBtn.addEventListener("click", function () {
-   listBuilderInfoDiv.style.display = "none"
-   addFilmsDiv.style.display = "block"
-   let listName = listNameTxt.value
-   let listDescription = listDescrTxt.value
-   /* PLACEHOLDER ADD NAME AND DESCR TO PLAYLIST OBJECT */
-})
-
+if (submitListInfoBtn) {
+   submitListInfoBtn.addEventListener("click", function () {
+      listBuilderInfoDiv.style.display = "none"
+      addFilmsDiv.style.display = "block"
+      let listName = listNameTxt.value
+      let listDescription = listDescrTxt.value
+      /* PLACEHOLDER ADD NAME AND DESCRIPTION TO PLAYLIST OBJECT */
+   })
+}
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
 createPlaylist(popularUrl, "popular")

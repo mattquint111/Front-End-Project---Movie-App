@@ -1,3 +1,5 @@
+import {authentication} from "./authentication/auth.js"
+
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305"
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
@@ -80,10 +82,9 @@ function createPlaylist(playlistUrl, playlistName) {
 document.onclick = function (event) {
    const target = event.target
 
-   if (target.tagName.toLowerCase() === "img") {
-      const movieContent =
-         target.parentElement.parentElement.parentElement.nextElementSibling
-      movieContent.classList.toggle("content-display")
+    if (target.tagName.toLowerCase() === "img") {
+        const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+        movieContent.classList.add("content-display")
 
       if (target.tagName.toLowerCase() === "img") {
          const movieContent =
@@ -117,4 +118,68 @@ document.onclick = function (event) {
       movieSpotlight(topRatedUrl, "topRatedContent")
       movieSpotlight(upcomingUrl, "upcomingContent")
    }
+}
+
+//--------------Login modal-------------------------
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("signup");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+//----------Authentication stuff -----------------
+authentication()
+
+
+// Create and access user playlists
+
+document.onclick = function(e) {
+    console.log(e.target.id)
+
+    // select watched movie icon
+    if (e.target.id === "watchedBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        getMovieObjectData(movieId)
+    }
+
+    // select favorites movie icon
+    if (e.target.id === "favoritesBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        getMovieObjectData(movieId)
+    }
+
+    // select watch later movie icon
+    if (e.target.id === "watchLaterBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        getMovieObjectData(movieId)
+    }
+
+    // select playlists movie icon
+    if (e.target.id === "playlistsBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        getMovieObjectData(movieId)
+    }
+}
+
+function getMovieObjectData(movieId) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+        .then(res => res.json())
+        .then(data => console.log(data))
 }

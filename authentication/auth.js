@@ -8,6 +8,7 @@ let authentication = () => {
 
 firebase.auth().onAuthStateChanged(function (user) {
     let playlistContainer = document.getElementById('playlist-container')
+    /*
     if (user) {
         playlistContainer.style.display = "block"
 
@@ -16,7 +17,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         playlistContainer.style.display = "none"
         console.log('no users signed in')
     }
-
+    */
     const signUp = (e) => {
         e.preventDefault()
         const email = usernameInput.value

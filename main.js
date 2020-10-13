@@ -92,6 +92,8 @@ document.onclick = function (event) {
   
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling
+        console.log(target.parentElement)
+        console.log(movieContent)
         movieContent.classList.toggle("content-display")
 
         console.log(target.id)

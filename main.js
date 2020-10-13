@@ -15,6 +15,42 @@ createPlaylist(topRatedUrl, "topRated")
 createPlaylist(upcomingUrl, "upcoming")
 
 
+// search movies
+const searchInput = document.getElementById("inputValue")
+const submitButton = document.getElementById('submitButton')
+
+submitButton.addEventListener('click', function() {
+    const movieName = searchInput.value;
+    const url = searchMovieUrl + movieName
+    
+    fetch(url)
+        .then(res => res.json())
+        .then(data => function() {
+            const movieArray = data.results
+        
+            const playList = document.getElementById(`searchedMovieList`)
+            const movieObject = document.createElement('div')
+            movieObject.classList.add('movieObject')
+
+            for (let i = 0; i < movieArray.length; i++) {
+                let movie = movieArray[i]
+                let movieData = `
+                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+                <span class="movieTitle">${movie.original_title}</span>
+                <span class="movieReleaseDate">${movie.release_date}</span>
+                `
+                const movieObject = document.createElement('div')
+                movieObject.classList.add('movieObject')
+                movieObject.innerHTML = movieData
+                playList.appendChild(movieObject)
+            }
+           
+
+        })
+        let searchResultsLabel = document.getElementById("searchResultsDiv")
+        searchResultsLabel.classList.toggle("content-display")
+})
+
 // FUNCTIONS
 function createPlaylist(playlistUrl, playlistName) {
     fetch(playlistUrl)

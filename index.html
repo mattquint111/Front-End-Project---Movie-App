@@ -51,7 +51,7 @@
             <a class="nav-link" href="#">Create Playlist</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <!-- <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
             type="search"
@@ -62,7 +62,7 @@
           <button class="btn btn-outline-success my-2 my-sm-0" id="submitButton" type="submit">
             Search
           </button>
-        </form>
+        </form> -->
       </div>
     </nav>
 
@@ -81,12 +81,12 @@
           <a class="nav-link" href="creator.html">List Maker</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchTxt" />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
         </button>
-      </form>
+      </form> -->
     </div>
   </nav>
 
@@ -105,26 +105,57 @@
         <a class="nav-link" href="#">Link 3</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchTxt">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
 
-    <div class="playlist">
-      <h1 class="playlistLabel">Top Rated</h1>
-      <div class="playlistContent" id="topRatedList"></div>
-    </div>
-    <div class="movieContent" id="topRatedContent"></div>
-
-    <div class="playlist">
-      <h1 class="playlistLabel">Upcoming</h1>
-      <div class="playlistContent" id="upcomingList"></div>
-    </div>
-    <div class="movieContent" id="upcomingContent"></div>
+<div class="searchContainer">
+  <div class="searchBar">
+    <label>
+    <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off" autocomplete="off" spellcheck="false">
+    </label>
+    <input type='submit' id="submitButton" value='Submit'>
   </div>
 
+  <div class="playlist movieContent" id="searchResultsDiv">
+    <h1 class="playlistLabel">Search Results</h1>
+    <div class="playlistContent" id='searchedMovieList'></div>
+  </div>
+  <div class='movieContent ' id="searchedMovieContent"></div>
+</div>
+
+<div class="playlistsContainer">
+
+  <div class="playlist">
+    <h1 class="playlistLabel">Now Playing</h1>
+    <div class="playlistContent" id='nowPlayingList'></div>
+  </div>
+  <div class='movieContent' id="nowPlayingContent"></div>
+
+
+  <div class="playlist">
+    <h1 class="playlistLabel">Popular</h1>
+    <div class="playlistContent" id='popularList'></div>
+  </div>
+  <div class='movieContent' id="popularContent"></div>
+
+
+  <div class="playlist">
+    <h1 class="playlistLabel">Top Rated</h1>
+    <div class="playlistContent" id='topRatedList'></div>
+  </div>
+  <div class='movieContent' id="topRatedContent"></div>
+
+  <div class="playlist">
+    <h1 class="playlistLabel">Upcoming</h1>
+    <div class="playlistContent" id='upcomingList'></div>
+  </div>
+  <div class='movieContent' id="upcomingContent"></div>
+
+</div>
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>

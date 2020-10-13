@@ -71,42 +71,44 @@ function createPlaylist(playlistUrl, playlistName) {
         })
 }
 
+// Display extra movie content
 
 
-// Event Delegation
-document.onclick = function (event) {
-    const target = event.target;
+// // Event Delegation
+// document.onclick = function (event) {
+//     const target = event.target;
 
-    if (target.tagName.toLowerCase() === "img") {
-        const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-        movieContent.classList.add("content-display")
+//     if (target.tagName.toLowerCase() === "img") {
+//         const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+//         movieContent.classList.add("content-display")
+//         console.log(movieContent)
 
-        const movieSpotlight = async (playlistUrl, spotlight) => {
-            const response = await (fetch(playlistUrl))
-            const movieArray = await response.json()
-            const resultsArray = movieArray.results
+//         const movieSpotlight = async (playlistUrl, spotlight) => {
+//             const response = await (fetch(playlistUrl))
+//             const movieArray = await response.json()
+//             const resultsArray = movieArray.results
 
-            //filter array for id
-            let specificMovie = resultsArray.filter(item => item.id == target.id)
-            const highlight = document.getElementById(spotlight)
+//             //filter array for id
+//             let specificMovie = resultsArray.filter(item => item.id == target.id)
+//             const highlight = document.getElementById(spotlight)
             
-            highlight.innerHTML = `
-            <div class = "movie-spotlight">
-                <div id = "spotlight-title">${specificMovie[0].original_title}</div>
-                <div>Release date:${specificMovie[0].release_date}</div>
-                <div>Description: ${specificMovie[0].overview}</div>
-                <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
-            </div>
-            `
-        
-        }
-        movieSpotlight(nowPlayingUrl, "nowPlayingContent")
-        movieSpotlight(popularUrl, 'popularContent')
-        movieSpotlight(topRatedUrl, 'topRatedContent')
-        movieSpotlight(upcomingUrl, 'upcomingContent')
+//             highlight.innerHTML = `
+//             <div class = "movie-spotlight">
+//                 <div id = "spotlight-title">${specificMovie[0].original_title}</div>
+//                 <div>Release date:${specificMovie[0].release_date}</div>
+//                 <div>Description: ${specificMovie[0].overview}</div>
+//                 <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
+//             </div>
+//             `
+//         }
 
-    }
-}
+//         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
+//         movieSpotlight(popularUrl, 'popularContent')
+//         movieSpotlight(topRatedUrl, 'topRatedContent')
+//         movieSpotlight(upcomingUrl, 'upcomingContent')
+
+//     }
+// }
 
 //--------------Login modal-------------------------
 var modal = document.getElementById("myModal");
@@ -139,7 +141,38 @@ authentication()
 // Create and access user playlists
 
 document.onclick = function(e) {
-    console.log(e.target.id)
+
+    // when image poster is cliecked
+    if (e.target.tagName.toLowerCase() === "img") {
+
+        const movieId = e.target.id
+        const movieContent = e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+            .then(res => res.json())
+            .then(data => {
+                const title = data.original_title
+                const overview = data.overview
+                const releaseDate = data.release_date
+                const runTime = data.runTime
+                const genreArray = data.genres.map (genreObject => {
+                    return genreObject.name
+                })
+
+                let movieData =`
+                <h1 id="movieTitle>${title}</h1>
+                <h3>Release date:${releaseDate}</h3>
+                <h4>Runtime: ${runTime} min</h4>
+                <hr>
+                <h6>${overview}</h6>`
+
+                movieContent.innerHTML = movieData
+                movieContent.classList.add('content-display')
+            })
+
+            
+    }
+
 
     // select watched movie icon
     if (e.target.id === "watchedBtn") {
@@ -172,6 +205,5 @@ function getMovieObjectData(movieId) {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            
         })
 }

@@ -66,9 +66,25 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log('user signed out')
     })
     
-   loginForm.addEventListener("click", signIn)
+    loginForm.addEventListener("click", signIn)
     signUpForm.addEventListener("click", signUp)   
 })
 }
 
 export {authentication}
+
+// create user object
+
+function createUserObject(userId, username) {
+    let userObject = {
+        "id": userId,
+        "username": username,
+        "playlists": {
+            "watched": [],
+            "favorites": [],
+            "watchLater": []
+        }
+    }
+    db.collection('users').add(userObject)
+}
+

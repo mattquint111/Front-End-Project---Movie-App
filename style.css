@@ -184,7 +184,7 @@ nav a{
 }
 .moviePoster:hover {
     border: 3px solid #ff0099;
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
 }
 
 .movieTitle {
@@ -213,6 +213,7 @@ nav a{
     justify-content: center;
     height: 300px;
     width: 90%;
+    color: #e94560;
 }
 
 /*--------------------------------Movie spotlight styles-----------------------------------*/

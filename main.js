@@ -10,13 +10,12 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 const searchInput = document.getElementById("inputValue")
 const submitButton = document.getElementById("submitButton")
 
-submitButton.addEventListener('click', function() {
-    let searchedList = document.getElementById("searchedList")
-    searchedList.innerHTML = ''
-    const movieName = searchInput.value;
-    const searchUrl = searchMovieUrl + movieName
-
-
+submitButton.addEventListener("click", function () {
+   let searchedList = document.getElementById("searchedList")
+   searchedList.innerHTML = ""
+   const movieName = searchInput.value
+   const searchUrl = searchMovieUrl + movieName
+})
 // listener for List Builder button
 let listNameTxt = document.getElementById("listNameTxt")
 let listDescrTxt = document.getElementById("listDescrTxt")
@@ -30,7 +29,6 @@ submitListInfoBtn.addEventListener("click", function () {
    let listName = listNameTxt.value
    let listDescription = listDescrTxt.value
    /* PLACEHOLDER ADD NAME AND DESCR TO PLAYLIST OBJECT */
-
 })
 
 // create homepage playlists
@@ -103,14 +101,12 @@ document.onclick = function (event) {
                 <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
             </div>
             `
-        
-            console.log(resultsArray)
-        
-        }
-        movieSpotlight(nowPlayingUrl, "nowPlayingContent")
-        movieSpotlight(popularUrl, 'popularContent')
-        movieSpotlight(topRatedUrl, 'topRatedContent')
-        movieSpotlight(upcomingUrl, 'upcomingContent')
 
-    }
+         console.log(resultsArray)
+      }
+      movieSpotlight(nowPlayingUrl, "nowPlayingContent")
+      movieSpotlight(popularUrl, "popularContent")
+      movieSpotlight(topRatedUrl, "topRatedContent")
+      movieSpotlight(upcomingUrl, "upcomingContent")
+   }
 }

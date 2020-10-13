@@ -44,39 +44,19 @@
     </div>
   </nav>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Log in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">My Lists</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 3</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchTxt">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
-    </form>
+
+
+  <div class="playlist">
+    <h1 class="playlistLabel">Top Rated</h1>
+    <div class="playlistContent" id="topRatedList"></div>
   </div>
-</nav>
+  <div class="movieContent" id="topRatedContent"></div>
 
-    <div class="playlist">
-      <h1 class="playlistLabel">Top Rated</h1>
-      <div class="playlistContent" id="topRatedList"></div>
-    </div>
-    <div class="movieContent" id="topRatedContent"></div>
-
-    <div class="playlist">
-      <h1 class="playlistLabel">Upcoming</h1>
-      <div class="playlistContent" id="upcomingList"></div>
-    </div>
-    <div class="movieContent" id="upcomingContent"></div>
+  <div class="playlist">
+    <h1 class="playlistLabel">Upcoming</h1>
+    <div class="playlistContent" id="upcomingList"></div>
+  </div>
+  <div class="movieContent" id="upcomingContent"></div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>

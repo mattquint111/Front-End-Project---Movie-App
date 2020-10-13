@@ -53,6 +53,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 90%;
 }
 
 .playlistLabel {
@@ -97,21 +99,32 @@ body {
 
 .movieContent {
     height: 300px;
+    width: 80%;
     display: none;
     background: #36404a;
     margin: 10px;
     border-radius: 10px;
 }
-.content div {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 10px;
-}
+
 
 .content-display {
-    display: block;
+    display: flex;
+    justify-content: center;
     height: 300px;
     width: 90%;
+}
+
+/*--------------------------------Movie spotlight styles-----------------------------------*/
+
+.nowPlayingContent {
+    display: flex;
+    justify-content: center;
+}
+.movie-spotlight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #46bcf4;
+
 }

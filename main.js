@@ -17,18 +17,18 @@ createPlaylist(upcomingUrl, "upcoming")
 // FUNCTIONS
 function createPlaylist(playlistUrl, playlistName) {
     fetch(playlistUrl)
-        .then(res => res.json())
-        .then(data => {
-            //array of movie objects
-            const movieArray = data.results
+    .then(res => res.json())
+    .then(data => {
+        //array of movie objects
+        const movieArray = data.results
+        
+        const playList = document.getElementById(`${playlistName}List`)
+        const movieObject = document.createElement('div')
+        movieObject.classList.add('movieObject')
 
-            const playList = document.getElementById(`${playlistName}List`)
-            const movieObject = document.createElement('div')
-            movieObject.classList.add('movieObject')
-
-            for (let i = 0; i < movieArray.length; i++) {
-                let movie = movieArray[i]
-                let movieData = `
+        for (let i = 0; i < movieArray.length; i++) {
+            let movie = movieArray[i]
+            let movieData = `
             <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
             <span class="movieTitle">${movie.original_title}</span>
             <span class="movieReleaseDate">${movie.release_date}</span>
@@ -50,19 +50,26 @@ document.onclick = function (event) {
     console.log(target)
 
     if (target.tagName.toLowerCase() === "img") {
+        const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling
+        movieContent.classList.toggle("content-display")
 
         console.log(target.id)
         const movieSpotlight = async (playlistUrl, movieId) => {
             const response = await (fetch(playlistUrl))
             const movieArray = await response.json()
             const resultsArray = movieArray.results
+
+            //filter array for id
+            let specificMovie = resultsArray.filter(item => item.id == target.id)
             const highlight = document.getElementById('nowPlayingContent')
             
             highlight.innerHTML = `
-            <div>${resultsArray[0].title}</div>
-            <div>${resultsArray[0].release_date}</div>
-            <div>${resultsArray[0].overview}</div>
-            <div>${resultsArray[0].vote_average} in ${resultsArray[0].vote_count} votes</div>
+            <div class = "movie-spotlight">
+                <div>${specificMovie[0].title}</div>
+                <div>${specificMovie[0].release_date}</div>
+                <div>${specificMovie[0].overview}</div>
+                <div>${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
+            </div>
             `
         
             console.log(resultsArray)
@@ -75,5 +82,3 @@ document.onclick = function (event) {
         //   content.classList.add("content-display");
     }
 }
-
-// create homepage higlight on click

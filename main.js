@@ -44,9 +44,19 @@ function createPlaylist(playlistUrl, playlistName) {
         for (let i = 0; i < movieArray.length; i++) {
             let movie = movieArray[i]
             let movieData = `
-            <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
-            <span class="movieTitle">${movie.original_title}</span>
-            <span class="movieReleaseDate">${movie.release_date}</span>
+            <div class="posterContainer">
+                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+                <div class="listButtons">
+                    <i class="far fa-eye"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="movieDataContainer">
+                <span class="movieTitle">${movie.original_title}</span>
+                <span class="movieReleaseDate">${movie.release_date}</span>
+            </div>
             `
                 const movieObject = document.createElement('div')
                 movieObject.classList.add('movieObject')

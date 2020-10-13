@@ -78,7 +78,7 @@ document.onclick = function (event) {
         }
         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
         movieSpotlight(popularUrl, 'popularContent')
-        movieSpotlight(topRatedUrl, 'topratedContent')
+        movieSpotlight(topRatedUrl, 'topRatedContent')
         movieSpotlight(upcomingUrl, 'upcomingContent')
 
         //   const section = target.parentElement;

@@ -115,6 +115,27 @@ nav a{
 
 .content-display {
     display: flex;
+    justify-content: center;
     height: 300px;
     width: 90%;
+}
+
+/*--------------------------------Movie spotlight styles-----------------------------------*/
+
+.nowPlayingContent {
+    display: flex;
+    justify-content: center;
+}
+.movie-spotlight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+    color: #46bcf4;
+}
+
+#spotlight-title{
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }

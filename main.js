@@ -34,13 +34,15 @@ function createPlaylist(playlistUrl, playlistName) {
             <span class="movieTitle">${movie.original_title}</span>
             <span class="movieReleaseDate">${movie.release_date}</span>
             `
-            const movieObject = document.createElement('div')
-            movieObject.classList.add('movieObject')
-            movieObject.innerHTML = movieData
-            playList.appendChild(movieObject)
-        }
-    })
+                const movieObject = document.createElement('div')
+                movieObject.classList.add('movieObject')
+                movieObject.innerHTML = movieData
+                playList.appendChild(movieObject)
+            }
+
+        })
 }
+
 
 
 // Event Delegation
@@ -49,8 +51,38 @@ document.onclick = function (event) {
 
   
     if (target.tagName.toLowerCase() === "img") {
-      const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling
-      movieContent.classList.toggle("content-display")
+        const movieContent = target.parentElement.parentElement.parentElement.nextElementSibling
+        movieContent.classList.toggle("content-display")
+
+        console.log(target.id)
+        const movieSpotlight = async (playlistUrl, spotlight) => {
+            const response = await (fetch(playlistUrl))
+            const movieArray = await response.json()
+            const resultsArray = movieArray.results
+
+            //filter array for id
+            let specificMovie = resultsArray.filter(item => item.id == target.id)
+            const highlight = document.getElementById(spotlight)
+            
+            highlight.innerHTML = `
+            <div class = "movie-spotlight">
+                <div id = "spotlight-title">${specificMovie[0].title}</div>
+                <div>Release date:${specificMovie[0].release_date}</div>
+                <div>Description: ${specificMovie[0].overview}</div>
+                <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
+            </div>
+            `
+        
+            console.log(resultsArray)
+        
+        }
+        movieSpotlight(nowPlayingUrl, "nowPlayingContent")
+        movieSpotlight(popularUrl, 'popularContent')
+        movieSpotlight(topRatedUrl, 'topRatedContent')
+        movieSpotlight(upcomingUrl, 'upcomingContent')
+
+        //   const section = target.parentElement;
+        //   const content = section.nextElementSibling;
+        //   content.classList.add("content-display");
     }
 }
-

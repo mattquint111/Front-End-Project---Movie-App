@@ -132,6 +132,11 @@ nav a{
     height: 420px;
     margin: 10px 0;
 }
+
+#searchContainer {
+  
+}
+
 #searchedList {
     display: flex;
     width: 100%;

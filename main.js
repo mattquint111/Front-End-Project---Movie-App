@@ -13,6 +13,8 @@ const searchInput = document.getElementById("inputValue")
 const submitButton = document.getElementById('submitButton')
 
 submitButton.addEventListener('click', function() {
+    let searchedList = document.getElementById("searchedList")
+    searchedList.innerHTML = ''
     const movieName = searchInput.value;
     const searchUrl = searchMovieUrl + movieName
 

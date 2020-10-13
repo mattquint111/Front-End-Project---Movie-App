@@ -8,6 +8,20 @@ const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiK
 const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
 
 
+// search movies
+const searchInput = document.getElementById("inputValue")
+const submitButton = document.getElementById('submitButton')
+
+submitButton.addEventListener('click', function() {
+    const movieName = searchInput.value;
+    const searchUrl = searchMovieUrl + movieName
+
+    createPlaylist(searchUrl, 'searched')
+
+    
+    searchInput.value = ''
+})
+
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
 createPlaylist(popularUrl, "popular")

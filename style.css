@@ -10,3 +10,103 @@ body {
 }
 
 
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 10vh;
+    background: #2e373f
+}
+
+
+.playlistsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 50px;
+}
+
+.playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.playlistLabel {
+    color: #46bcf4;
+}
+
+.playlistContent {
+    color: #46bcf4;
+    display: flex;
+    top: 100px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.movieObject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    flex: 0 0 auto;
+}
+
+.movieObject img {
+    border-radius: 8px;
+    cursor: pointer;
+}
+.moviePoster:hover {
+    border: 3px solid #6ad5fc
+}
+
+.movieTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.movieReleaseDate {
+    font-size: .8em;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.movieContent {
+    height: 300px;
+    width: 80%;
+    display: none;
+    background: #36404a;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+
+.content-display {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    width: 90%;
+}
+
+/*--------------------------------Movie spotlight styles-----------------------------------*/
+
+.nowPlayingContent {
+    display: flex;
+    justify-content: center;
+}
+.movie-spotlight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+    color: #46bcf4;
+}
+
+#spotlight-title{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}

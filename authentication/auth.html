@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <div id="web-app">
+        <div id="container">
+            <form id="login-form">
+                <label for="username">Username: </label>
+                <input class=login-input id="username-input" type="email" required>
+                <label for="password">Password: </label>
+                <input class=login-input id="password-input" type="password" required>
+                <button id="login-button">Login</button>
+                <button id="signup-button">Sign up</button>
+            </form>
+            <p>Not a user? Join today!</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+    authDomain: "movieapp-3365a.firebaseapp.com",
+    databaseURL: "https://movieapp-3365a.firebaseio.com",
+    projectId: "movieapp-3365a",
+    storageBucket: "movieapp-3365a.appspot.com",
+    messagingSenderId: "845732737286",
+    appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+    measurementId: "G-HTVFL47E1X"
+  }
+  firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth()
+    var db = firebase.firestore();
+</script>
+    
+</body>
+
+</html>

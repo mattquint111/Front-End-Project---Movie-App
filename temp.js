@@ -1,5 +1,4 @@
 import {authentication} from "./authentication/auth.js"
-
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
@@ -13,6 +12,7 @@ const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKe
 const searchInput = document.getElementById("inputValue")
 const submitButton = document.getElementById('submitButton')
 
+/*
 submitButton.addEventListener('click', function() {
     let searchedList = document.getElementById("searchedList")
     searchedList.innerHTML = ''
@@ -23,8 +23,17 @@ submitButton.addEventListener('click', function() {
 
     
     searchInput.value = ''
+   
 })
+*/
+/*
+let addFilmsSearchTxt = document.getElementById("addFilmsSerchTxt")
 
+addFilmsSearchTxt.addEventListener("input", function() {
+    let search = addFilmsSearchTxt.value
+    let searchUrl = searchMovieUrl + search
+    createPlaylist(searchUrl,'searched')
+})*/
 
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
@@ -32,7 +41,11 @@ createPlaylist(popularUrl, "popular")
 createPlaylist(topRatedUrl, "topRated")
 createPlaylist(upcomingUrl, "upcoming")
 
-
+const fetchMovieData = async (playlistUrl) => {
+    const moviesresponse = await fetch(playlistUrl)
+    const moviesArray = await moviesresponse.json()
+    return moviesArray
+}
 // FUNCTIONS
 function createPlaylist(playlistUrl, playlistName) {
     fetch(playlistUrl)
@@ -70,7 +83,7 @@ function createPlaylist(playlistUrl, playlistName) {
 
         })
 }
-
+const signup = document.getElementById('signup')
 
 
 // Event Delegation
@@ -79,17 +92,20 @@ document.onclick = function (event) {
 
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-        movieContent.classList.add("content-display")
+        movieContent.classList.toggle("content-display")
 
-        const movieSpotlight = async (playlistUrl, spotlight) => {
+        const movieSpotlight = async(playlistUrl, spotlight) => {
             const response = await (fetch(playlistUrl))
             const movieArray = await response.json()
             const resultsArray = movieArray.results
-
+            try {
+            let data = await fetchMovieData(playlistUrl)
+        
+            const resultsArray = data.results
             //filter array for id
-            let specificMovie = resultsArray.filter(item => item.id == target.id)
+            const specificMovie = resultsArray.filter(item => item.id == target.id)
             const highlight = document.getElementById(spotlight)
-            
+
             highlight.innerHTML = `
             <div class = "movie-spotlight">
                 <div id = "spotlight-title">${specificMovie[0].original_title}</div>
@@ -98,16 +114,19 @@ document.onclick = function (event) {
                 <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
             </div>
             `
-        
+        }
+        catch{
+            console.log('error')
         }
         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
         movieSpotlight(popularUrl, 'popularContent')
         movieSpotlight(topRatedUrl, 'topRatedContent')
         movieSpotlight(upcomingUrl, 'upcomingContent')
+        
 
     }
 }
-
+}
 //--------------Login modal-------------------------
 var modal = document.getElementById("myModal");
 
@@ -135,39 +154,3 @@ window.onclick = function (event) {
 //----------Authentication stuff -----------------
 authentication()
 
-
-// Create and access user playlists
-
-document.onclick = function(e) {
-    console.log(e.target.id)
-
-    // select watched movie icon
-    if (e.target.id === "watchedBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
-
-    // select favorites movie icon
-    if (e.target.id === "favoritesBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
-
-    // select watch later movie icon
-    if (e.target.id === "watchLaterBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
-
-    // select playlists movie icon
-    if (e.target.id === "playlistsBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
-}
-
-function getMovieObjectData(movieId) {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
-        .then(res => res.json())
-        .then(data => console.log(data))
-}

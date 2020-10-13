@@ -52,6 +52,12 @@
           </li>
         </ul>
       </div>
+      <button id="signup" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Signup
+      </button>
+      <button id="logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        logOut
+      </button>
     </nav>
 
   <div class='mainContainer'>
@@ -100,13 +106,54 @@
 
   </div>
     
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="web-app">
+          <div id="container">
+            <form id="login-form">
+              <label for="username">Username: </label>
+              <input class=login-input id="username-input" type="email" required>
+              <label for="password">Password: </label>
+              <input class=login-input id="password-input" type="password" required>
+              <button id="login-button">Login</button>
+              <button id="signup-button">Sign up</button>
+            </form>
+            <p>Not a user? Join today!</p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <!------------------------------Firebase Scripts BELOW------------------------------------>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+        authDomain: "movieapp-3365a.firebaseapp.com",
+        databaseURL: "https://movieapp-3365a.firebaseio.com",
+        projectId: "movieapp-3365a",
+        storageBucket: "movieapp-3365a.appspot.com",
+        messagingSenderId: "845732737286",
+        appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+        measurementId: "G-HTVFL47E1X",
+      };
+      firebase.initializeApp(firebaseConfig);
+  
+      const auth = firebase.auth();
+      var db = firebase.firestore()</script>
 
 
 
   const auth = firebase.auth();
   </script>
 
-  <script src="main.js"></script>
+  <script type = "module" src="main.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

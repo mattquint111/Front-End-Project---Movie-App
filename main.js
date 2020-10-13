@@ -83,24 +83,30 @@ document.onclick = function (event) {
          target.parentElement.parentElement.parentElement.nextElementSibling
       movieContent.classList.toggle("content-display")
 
-      console.log(target.id)
-      const movieSpotlight = async (playlistUrl, spotlight) => {
-         const response = await fetch(playlistUrl)
-         const movieArray = await response.json()
-         const resultsArray = movieArray.results
+      if (target.tagName.toLowerCase() === "img") {
+         const movieContent =
+            target.parentElement.parentElement.parentElement.parentElement
+               .nextElementSibling
+         movieContent.classList.toggle("content-display")
 
-         //filter array for id
-         let specificMovie = resultsArray.filter((item) => item.id == target.id)
-         const highlight = document.getElementById(spotlight)
+         const movieSpotlight = async (playlistUrl, spotlight) => {
+            const response = await fetch(playlistUrl)
+            const movieArray = await response.json()
+            const resultsArray = movieArray.results
 
-         highlight.innerHTML = `
+            highlight.innerHTML = `
             <div class = "movie-spotlight">
-                <div id = "spotlight-title">${specificMovie[0].title}</div>
+                <div id = "spotlight-title">${specificMovie[0].original_title}</div>
                 <div>Release date:${specificMovie[0].release_date}</div>
                 <div>Description: ${specificMovie[0].overview}</div>
                 <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
             </div>
             `
+         }
+         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
+         movieSpotlight(popularUrl, "popularContent")
+         movieSpotlight(topRatedUrl, "topRatedContent")
+         movieSpotlight(upcomingUrl, "upcomingContent")
 
          console.log(resultsArray)
       }

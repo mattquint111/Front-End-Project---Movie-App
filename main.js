@@ -73,10 +73,9 @@ addFilmsToListBtn.addEventListener("click", function () {
                   db.collection("users")
                      .doc(userId)
                      .collection("playlists")
-                     .doc(userId)
-                     console.log([userId])
-                     .update({
-                        [userId]: firebase.firestore.FieldValue.arrayUnion(
+                     .doc(listName)
+                     .set({
+                        playlist: firebase.firestore.FieldValue.arrayUnion(
                            data
                         ),
                      })

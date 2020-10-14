@@ -50,7 +50,7 @@ const passwordInput = document.getElementById('password-input')
 
             const getUser = await firebase.auth().signInWithEmailAndPassword(email, password)
             const user = getUser.user
-            console(user)
+            console.log(user)
         }
 
 export {signUp, signIn}

@@ -147,12 +147,12 @@ document.onclick = function(e) {
 
                 const closeContentBtn = document.getElementById("closeContent")
                 closeContentBtn.addEventListener("click", function() {
-                    movieContent.classList.remove('content-display')
+                    this.parentElement.classList.remove('content-display')
                 })
             })
 
     }
-
+    
 
     // select watched movie icon
     if (e.target.id === "watchedBtn") {

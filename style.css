@@ -166,6 +166,7 @@ nav:hover {
     height: auto;
     overflow: auto;
     margin-top: 10px;
+    padding-top: 20px;
     color: #e94560;
 }
 #searchedList .posterContainer {

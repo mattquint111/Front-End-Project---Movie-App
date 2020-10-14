@@ -60,10 +60,7 @@ if (addFilmsSearchBtn) {
                 searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
             }
         })
-
-        addFilmsSearchTxt.value = ""
-
-        
+        addFilmsSearchTxt.value = "" 
     })
 }
 

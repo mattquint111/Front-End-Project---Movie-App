@@ -355,3 +355,8 @@ nav:hover {
   ::-webkit-scrollbar-thumb:hover {
     background: #b32340; 
   }
+/* ---------------------LISTS PAGE------------------------ */
+.savedPlaylist {
+    display: flex;
+}
+

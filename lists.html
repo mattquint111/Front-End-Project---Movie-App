@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App</title>
+    <title>Movie App - Lists</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -66,48 +66,29 @@
 
   <div class='mainContainer'>
 
-    <div class="searchContainer">
-      
-      <div class="searchBar">
-        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off" autocomplete="off" spellcheck="false">
-        <button type='submit' id="submitButton" value='Submit'>Submit</button>
-      </div>
-      
-      <div class="playlist" id="searchContainer">
-        <div class="searchPlaylistContent" id='searchedList'></div>
-      </div>
-      <div class="movieContent" id="searchedContent"></div>
-    
-    </div>
 
     <div class="playlistsContainer">
+      
+        <div class="playlist savedPlaylist">
+            <h1 class="playlistLabel">Favorites</h1>
+            <div class="playlistContent" id="favoritesList"></div>
+          </div>
+          <div class="movieContent" id="favoritesContent"></div>
+
 
       <div class="playlist">
-        <h1 class="playlistLabel">Now Playing</h1>
-        <div class="playlistContent" id="nowPlayingList"></div>
+        <h1 class="playlistLabel">Watched</h1>
+        <div class="playlistContent" id="watchedList"></div>
       </div>
-      <div class="movieContent" id="nowPlayingContent">
+      <div class="movieContent" id="watchedContent">
         
       </div>
 
       <div class="playlist">
-        <h1 class="playlistLabel">Popular</h1>
-        <div class="playlistContent" id="popularList"></div>
+        <h1 class="playlistLabel">Watch Later</h1>
+        <div class="playlistContent" id="watchLaterList"></div>
       </div>
-      <div class="movieContent" id="popularContent"></div>
-
-      <div class="playlist">
-        <h1 class="playlistLabel">Top Rated</h1>
-        <div class="playlistContent" id="topRatedList"></div>
-      </div>
-      <div class="movieContent" id="topRatedContent"></div>
-
-      <div class="playlist">
-        <h1 class="playlistLabel">Upcoming</h1>
-        <div class="playlistContent" id="upcomingList"></div>
-      </div>
-      <div class="movieContent" id="upcomingContent"></div>
-    </div>
+      <div class="movieContent" id="watchLaterContent"></div>
 
   </div>
     
@@ -151,14 +132,10 @@
       firebase.initializeApp(firebaseConfig);
   
       const auth = firebase.auth();
-      var db = firebase.firestore()</script>
-
-
-
-  const auth = firebase.auth();
+      var db = firebase.firestore()
   </script>
 
-  <script type = "module" src="main.js"></script>
+  <script type = "module" src="lists.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

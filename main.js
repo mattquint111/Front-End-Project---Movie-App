@@ -49,22 +49,19 @@ function createPlaylist(playlistUrl, playlistName) {
             let movie = movieArray[i]
             let movieData = `
             <div class="posterContainer">
-                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+                <img class="moviePoster" src="https://image.tmdb.org/t/p/w300/${movie.poster_path}" alt="movie poster" id=${movie.id}>
                 <div class="listButtons">
                     <i id="watchedBtn" class="far fa-eye"></i>
                     <i id="favoritesBtn" class="fas fa-heart"></i>
                     <i id="watchLaterBtn" class="fas fa-plus"></i>
                     <i id="playlistsBtn" class="fas fa-ellipsis-h">
                         <div class='playlistOption">
-                        
+                            <span class="playlistName">test playlist</span>
                         </div>
                     </i>
                 </div>
             </div>
-            <div class="movieDataContainer">
-                <span class="movieTitle">${movie.original_title}</span>
-                <span class="movieReleaseDate">${movie.release_date}</span>
-            </div>
+            
             `
                 const movieObject = document.createElement('div')
                 movieObject.classList.add('movieObject')
@@ -73,44 +70,6 @@ function createPlaylist(playlistUrl, playlistName) {
             }
 
         })
-}
-
-
-
-// Event Delegation
-document.onclick = function (event) {
-    const target = event.target;
-    let user = firebase.auth().currentUser
-
-    if (target.tagName.toLowerCase() === "img") {
-        const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-        movieContent.classList.add("content-display")
-
-        const movieSpotlight = async (playlistUrl, spotlight) => {
-            const response = await (fetch(playlistUrl))
-            const movieArray = await response.json()
-            const resultsArray = movieArray.results
-
-            //filter array for id
-            let specificMovie = resultsArray.filter(item => item.id == target.id)
-            const highlight = document.getElementById(spotlight)
-            
-            highlight.innerHTML = `
-            <div class = "movie-spotlight">
-                <div id = "spotlight-title">${specificMovie[0].original_title}</div>
-                <div>Release date:${specificMovie[0].release_date}</div>
-                <div>Description: ${specificMovie[0].overview}</div>
-                <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
-            </div>
-            `
-        
-        }
-        movieSpotlight(nowPlayingUrl, "nowPlayingContent")
-        movieSpotlight(popularUrl, 'popularContent')
-        movieSpotlight(topRatedUrl, 'topRatedContent')
-        movieSpotlight(upcomingUrl, 'upcomingContent')
-
-    }
 }
 
 //--------------Login modal-------------------------
@@ -157,7 +116,43 @@ signUpForm.addEventListener("click", signUp)
 // Create and access user playlists
 
 document.onclick = function(e) {
-    console.log(e.target.id)
+    const target = e.target
+    // console.log(e.target.id)
+    if (target.tagName.toLowerCase() === "img") {
+        const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+        movieContent.classList.add("content-display")
+        const id = target.id
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+            .then(res => res.json())
+            .then(data => {
+                const title = data.original_title
+                const overview = data.overview
+                const date = data.release_date
+                const runtime = data.runtime
+                const genre = data.genres[0].name
+                console.log(genre)
+                let movieInfo = `
+                <i class="fas fa-times" id="closeContent"></i>                
+                <h1 class="extraDataTitle"><b>${title}</b></h1>
+                <h2 class="extraDataDate">Release Date: ${date}</h2>
+                <h3 class="extraDataRuntime">Runtime: ${runtime} min</h3>
+                <h3 class="extraDataGenre">Genre: ${genre}</h3>
+                <hr>
+                <p class="extraDataOverview"><em>${overview}</em></p>
+                `
+
+                movieContent.innerHTML = movieInfo
+                movieContent.classList.add('content-display')
+
+                const closeContentBtn = document.getElementById("closeContent")
+                closeContentBtn.addEventListener("click", function() {
+                    movieContent.classList.remove('content-display')
+                })
+            })
+
+    }
+
 
     // select watched movie icon
     if (e.target.id === "watchedBtn") {

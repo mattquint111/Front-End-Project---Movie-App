@@ -24,7 +24,6 @@ if (submitButton) {
 
 // listener for List Builder button
 let listNameTxt = document.getElementById("listNameTxt")
-let listDescrTxt = document.getElementById("listDescrTxt")
 let submitListInfoBtn = document.getElementById("submitListInfoBtn")
 let listBuilderInfoDiv = document.getElementById("listBuilderInfoDiv")
 let addFilmsDiv = document.getElementById("addFilmsDiv")
@@ -38,30 +37,29 @@ if (submitListInfoBtn) {
       listBuilderInfoDiv.style.display = "none"
       addFilmsDiv.style.display = "flex"
       let listName = listNameTxt.value
-      let listDescription = listDescrTxt.value
-      /* PLACEHOLDER ADD NAME AND DESCRIPTION TO PLAYLIST OBJECT */
    })
 }
-if (addFilmsSearchBtn) {
-    addFilmsSearchBtn.addEventListener("click", function () {
-        searchResultsDiv.innerHTML = ""
-        let userInput = addFilmsSearchTxt.value
-        let searchUrl = searchMovieUrl + userInput
 
-        fetch(searchUrl)
-        .then((res) => res.json())
-        .then((data) => {
+if (addFilmsSearchBtn) {
+   addFilmsSearchBtn.addEventListener("click", function () {
+      searchResultsDiv.innerHTML = ""
+      let userInput = addFilmsSearchTxt.value
+      let searchUrl = searchMovieUrl + userInput
+
+      fetch(searchUrl)
+         .then((res) => res.json())
+         .then((data) => {
             let movieArray = data.results
             console.log(movieArray)
-            for(let i = 0; i< movieArray.length; i++){
-                let movie = movieArray[i]
-                let movieObject = `
+            for (let i = 0; i < movieArray.length; i++) {
+               let movie = movieArray[i]
+               let movieObject = `
                 <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>`
-                searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
+               searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
             }
-        })
-        addFilmsSearchTxt.value = "" 
-    })
+         })
+      addFilmsSearchTxt.value = ""
+   })
 }
 
 // create homepage playlists

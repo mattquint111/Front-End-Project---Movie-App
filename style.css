@@ -16,12 +16,45 @@ nav a{
     color: #f50040;
 }
 
+
+
+.button {
+    padding: 5px;
+    color: #f50040;
+    background: none;
+    border-color: #f50040;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid #f50040;
+}
+button:hover {
+    background: #f50040;
+    color: white;
+    border: 2px solid white;
+}
+
+#menubutton{
+    padding: 20px;
+}
+#menuButton:hover {
+    color: white;
+}
+
+.navbarText:hover {
+    color: white;
+}
+
+nav:hover {
+    color: white;
+}
+
 .navbar-toggler {
     border: 1px solid red;
     outline: none;
 }
 .navbar-toggler:hover {
-    color: #bf00ff;
+    color: white;
 }
 
 .navbar-toggler:focus,
@@ -29,6 +62,7 @@ nav a{
 .navbar-toggler-icon:focus {
     outline: none;
     box-shadow: none;
+    color: white
 }
 
 .fa-bars {
@@ -39,7 +73,7 @@ nav a{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
 
 }
 
@@ -51,7 +85,7 @@ nav a{
     margin-top: 50px;
     background: #20305b;
     padding: 20px 0;
-    border-radius: 10px;
+
 }
 
 .searchBar {
@@ -86,8 +120,8 @@ nav a{
 }
 #submitButton:hover {
     background: #f50040;
-    color: #26264d;
-    border: 2px solid #0c0c18;
+    color: white;
+    border: 2px solid white;
 }
 
 
@@ -105,11 +139,13 @@ nav a{
     align-items: center;
     justify-content: center;
     width: 90%;
+    height: auto;
 }
 
 .playlistLabel {
     color: #e92748;
 }
+
 
 .playlistContent {
     color: #e94560;
@@ -118,14 +154,16 @@ nav a{
     flex-wrap: nowrap;
     overflow-x: auto;
     width: 100%;
-    height: 420px;
+    height: auto;
     margin: 10px 0;
+    padding: 20px 0;
 }
 
 
 #searchedList {
     display: flex;
     width: 100%;
+    height: auto;
     overflow: auto;
     margin-top: 10px;
     color: #e94560;
@@ -181,9 +219,10 @@ nav a{
 .movieObject img {
     border-radius: 8px;
     cursor: pointer;
+    height: 300px;
 }
 .moviePoster:hover {
-    border: 3px solid #ff0099;
+    border: 3px solid #fe2961;
     transform: scale(1.2);
 }
 
@@ -199,20 +238,33 @@ nav a{
 }
 
 .movieContent {
-    height: 300px;
     width: 80%;
     display: none;
     background: #16213e;
+    color: white;
     margin: 10px;
     border-radius: 10px;
+    border: 2px solid #f50040;
 }
 
 
 .content-display {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 300px;
+    height: auto;
     width: 90%;
+    padding: 10px;
+}
+.content-display hr {
+    background: white;
+}
+
+#closeContent {
+    align-self: flex-end;
+    color: red;
+    cursor: pointer;
+    padding: 10px;
 }
 
 /*--------------------------------Movie spotlight styles-----------------------------------*/
@@ -285,4 +337,3 @@ nav a{
     cursor: pointer;
   }
   
-  .playlist

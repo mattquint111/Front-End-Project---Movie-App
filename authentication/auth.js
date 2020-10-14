@@ -39,6 +39,7 @@ const passwordInput = document.getElementById('password-input')
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
                 });
+                db.collection('users').doc(user.uid).collection('playlist').doc('test_user').set({})
 
         }
 

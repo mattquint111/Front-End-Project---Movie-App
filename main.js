@@ -1,4 +1,4 @@
-import {authentication} from "./authentication/auth.js"
+import {signIn, signUp} from "./authentication/auth.js"
 
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
@@ -76,6 +76,7 @@ function createPlaylist(playlistUrl, playlistName) {
 // Event Delegation
 document.onclick = function (event) {
     const target = event.target;
+    let user = firebase.auth().currentUser
 
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
@@ -133,5 +134,18 @@ window.onclick = function (event) {
     }
 }
 //----------Authentication stuff -----------------
-authentication()
+const logout = document.getElementById('logout');
+logout.addEventListener('click', async (e) => {
+    e.preventDefault()
+    await auth.signOut()
+    console.log('user signed out')
+})
+
+const loginForm = document.getElementById('login-button')
+const signUpForm = document.getElementById('signup-button')
+
+loginForm.addEventListener("click", signIn)
+signUpForm.addEventListener("click", signUp)
+
+
 

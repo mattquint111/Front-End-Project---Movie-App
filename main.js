@@ -1,4 +1,4 @@
-import {signIn, signUp} from "./authentication/auth.js"
+import { signIn, signUp } from "./authentication/auth.js"
 
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305"
@@ -17,24 +17,56 @@ if (submitButton) {
       searchedList.innerHTML = ""
       const movieName = searchInput.value
       const searchUrl = searchMovieUrl + movieName
+      createPlaylist(searchUrl, "searched")
+      searchInput.value = ""
    })
 }
+
 // listener for List Builder button
 let listNameTxt = document.getElementById("listNameTxt")
 let listDescrTxt = document.getElementById("listDescrTxt")
 let submitListInfoBtn = document.getElementById("submitListInfoBtn")
 let listBuilderInfoDiv = document.getElementById("listBuilderInfoDiv")
 let addFilmsDiv = document.getElementById("addFilmsDiv")
+let addFilmsSearchBtn = document.getElementById("addFilmsSearchBtn")
+let addFilmsSearchTxt = document.getElementById("addFilmsSearchTxt")
+let searchResultsDiv = document.getElementById("searchResultsDiv")
 let navbar = document.getElementsByClassName("navbar navbar-expand-lg")
+
 if (submitListInfoBtn) {
    submitListInfoBtn.addEventListener("click", function () {
       listBuilderInfoDiv.style.display = "none"
-      addFilmsDiv.style.display = "block"
+      addFilmsDiv.style.display = "flex"
       let listName = listNameTxt.value
       let listDescription = listDescrTxt.value
       /* PLACEHOLDER ADD NAME AND DESCRIPTION TO PLAYLIST OBJECT */
    })
 }
+if (addFilmsSearchBtn) {
+    addFilmsSearchBtn.addEventListener("click", function () {
+        searchResultsDiv.innerHTML = ""
+        let userInput = addFilmsSearchTxt.value
+        let searchUrl = searchMovieUrl + userInput
+
+        fetch(searchUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            let movieArray = data.results
+            console.log(movieArray)
+            for(let i = 0; i< movieArray.length; i++){
+                let movie = movieArray[i]
+                let movieObject = `
+                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>`
+                searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
+            }
+        })
+
+        addFilmsSearchTxt.value = ""
+
+        
+    })
+}
+
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
 createPlaylist(popularUrl, "popular")
@@ -80,12 +112,14 @@ function createPlaylist(playlistUrl, playlistName) {
 
 // Event Delegation
 document.onclick = function (event) {
-    const target = event.target;
-    let user = firebase.auth().currentUser
+   const target = event.target
+   let user = firebase.auth().currentUser
 
-    if (target.tagName.toLowerCase() === "img") {
-        const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-        movieContent.classList.add("content-display")
+   if (target.tagName.toLowerCase() === "img") {
+      const movieContent =
+         target.parentElement.parentElement.parentElement.parentElement
+            .nextElementSibling
+      movieContent.classList.add("content-display")
 
       if (target.tagName.toLowerCase() === "img") {
          const movieContent =
@@ -122,78 +156,77 @@ document.onclick = function (event) {
 }
 
 //--------------Login modal-------------------------
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("myModal")
 
 // Get the button that opens the modal
-var btn = document.getElementById("signup");
+var btn = document.getElementById("signup")
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close")[0]
 
 btn.onclick = function () {
-    modal.style.display = "block";
+   modal.style.display = "block"
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-    modal.style.display = "none";
+   modal.style.display = "none"
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+   if (event.target == modal) {
+      modal.style.display = "none"
+   }
 }
 //----------Authentication stuff -----------------
-const logout = document.getElementById('logout');
-logout.addEventListener('click', async (e) => {
-    e.preventDefault()
-    await auth.signOut()
-    console.log('user signed out')
+const logout = document.getElementById("logout")
+logout.addEventListener("click", async (e) => {
+   e.preventDefault()
+   await auth.signOut()
+   console.log("user signed out")
 })
 
-const loginForm = document.getElementById('login-button')
-const signUpForm = document.getElementById('signup-button')
+const loginForm = document.getElementById("login-button")
+const signUpForm = document.getElementById("signup-button")
 
 loginForm.addEventListener("click", signIn)
 signUpForm.addEventListener("click", signUp)
 
-
-
-
 // Create and access user playlists
 
-document.onclick = function(e) {
-    console.log(e.target.id)
+document.onclick = function (e) {
+   console.log(e.target.id)
 
-    // select watched movie icon
-    if (e.target.id === "watchedBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
+   // select watched movie icon
+   if (e.target.id === "watchedBtn") {
+      const movieId = e.target.parentElement.parentElement.firstElementChild.id
+      getMovieObjectData(movieId)
+   }
 
-    // select favorites movie icon
-    if (e.target.id === "favoritesBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
+   // select favorites movie icon
+   if (e.target.id === "favoritesBtn") {
+      const movieId = e.target.parentElement.parentElement.firstElementChild.id
+      getMovieObjectData(movieId)
+   }
 
-    // select watch later movie icon
-    if (e.target.id === "watchLaterBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
+   // select watch later movie icon
+   if (e.target.id === "watchLaterBtn") {
+      const movieId = e.target.parentElement.parentElement.firstElementChild.id
+      getMovieObjectData(movieId)
+   }
 
-    // select playlists movie icon
-    if (e.target.id === "playlistsBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
+   // select playlists movie icon
+   if (e.target.id === "playlistsBtn") {
+      const movieId = e.target.parentElement.parentElement.firstElementChild.id
+      getMovieObjectData(movieId)
+   }
 }
 
 function getMovieObjectData(movieId) {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
-        .then(res => res.json())
-        .then(data => console.log(data))
+   fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`
+   )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
 }

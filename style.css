@@ -245,7 +245,6 @@ nav a{
 }
 #addFilmsDiv {
     width: 80%;
-    height: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -259,6 +258,7 @@ nav a{
 }
 #addFilmsSearchTxt {
     background-color: #1a1a2e;
+    color:white;
 }
 #addFilmsToListBtn {
     width: 30px;

@@ -30,46 +30,65 @@ let addFilmsDiv = document.getElementById("addFilmsDiv")
 let addFilmsSearchBtn = document.getElementById("addFilmsSearchBtn")
 let addFilmsSearchTxt = document.getElementById("addFilmsSearchTxt")
 let searchResultsDiv = document.getElementById("searchResultsDiv")
-let navbar = document.getElementsByClassName("navbar navbar-expand-lg")
+let addFilmsToListBtn = document.getElementById("addFilmsToListBtn")
+var listName
+var tempArr = []
 
-if (submitListInfoBtn) {
-   submitListInfoBtn.addEventListener("click", function () {
-      listBuilderInfoDiv.style.display = "none"
-      addFilmsDiv.style.display = "flex"
-      let listName = listNameTxt.value
-      firebase.auth().onAuthStateChanged(function (user) {
-         if (user) {
-            let userId = user.uid
-            db.collection("users")
-               .doc(userId)
-               .update({
-                  [listName] : []
-               })
+submitListInfoBtn.addEventListener("click", function () {
+   listBuilderInfoDiv.style.display = "none"
+   addFilmsDiv.style.display = "flex"
+   listName = listNameTxt.value
+})
+
+addFilmsSearchBtn.addEventListener("click", function () {
+   searchResultsDiv.innerHTML = ""
+   let userInput = addFilmsSearchTxt.value
+   let searchUrl = searchMovieUrl + userInput
+   // print list of movies
+   fetch(searchUrl)
+      .then((res) => res.json())
+      .then((data) => {
+         let movieArray = data.results
+         console.log(movieArray)
+         for (let i = 0; i < movieArray.length; i++) {
+            let movie = movieArray[i]
+            let movieObject = `
+                <img class="addMoviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>`
+            searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
          }
       })
-   })
-}
+})
 
-if (addFilmsSearchBtn) {
-   addFilmsSearchBtn.addEventListener("click", function () {
-      searchResultsDiv.innerHTML = ""
-      let userInput = addFilmsSearchTxt.value
-      let searchUrl = searchMovieUrl + userInput
-      fetch(searchUrl)
+addFilmsToListBtn.addEventListener("click", function () {
+   console.log(listName)
+   for (let i = 0; i < tempArr.length; i++) {
+      fetch(
+         `https://api.themoviedb.org/3/movie/${tempArr[i]}?api_key=0310c1a97f001b72c2466fdfc9e4f305`
+      )
          .then((res) => res.json())
          .then((data) => {
-            let movieArray = data.results
-            console.log(movieArray)
-            for (let i = 0; i < movieArray.length; i++) {
-               let movie = movieArray[i]
-               let movieObject = `
-                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>`
-               searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
-            }
+            firebase.auth().onAuthStateChanged(function (user) {
+               if (user) {
+                  let userId = user.uid
+                  db.collection("users")
+                     .doc(userId)
+                     .collection("playlists")
+                     .doc(userId)
+                     console.log([userId])
+                     .update({
+                        [userId]: firebase.firestore.FieldValue.arrayUnion(
+                           data
+                        ),
+                     })
+                     .catch(e => {
+                         console.log(e)
+                     })
+               }
+            })
          })
-      addFilmsSearchTxt.value = ""
-   })
-}
+   }
+
+})
 
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
@@ -202,7 +221,6 @@ loginForm.addEventListener("click", signIn)
 signUpForm.addEventListener("click", signUp)
 
 // Create and access user playlists
-
 document.onclick = function (e) {
    console.log(e.target.id)
 
@@ -228,6 +246,12 @@ document.onclick = function (e) {
    if (e.target.id === "playlistsBtn") {
       const movieId = e.target.parentElement.parentElement.firstElementChild.id
       getMovieObjectData(movieId)
+   }
+
+   // select movies in playlist creator
+   if (e.target.className === "addMoviePoster") {
+      tempArr.push(e.target.id)
+      console.log(tempArr)
    }
 }
 

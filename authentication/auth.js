@@ -29,8 +29,7 @@ const passwordInput = document.getElementById('password-input')
                     
                     watched: [],
                     favorites: [],
-                    watchLater: [],
-                    
+                    watchLater: [], 
                 }
                 db.collection('users').doc(user.uid).set(userObject)
                 .then(function(docRef) {

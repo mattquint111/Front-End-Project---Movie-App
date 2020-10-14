@@ -199,15 +199,19 @@ nav:hover {
 }
 #watchedBtn:hover {
     color: rgb(0, 179, 255);
+    cursor: pointer;
 }
 #favoritesBtn:hover {
     color: rgb(255, 0, 81);
+    cursor: pointer;
 }
 #watchLaterBtn:hover {
     color: rgb(39, 255, 6);
+    cursor: pointer;
 }
 #playlistsBtn:hover {
     color: rgb(179, 0, 255);
+    cursor: pointer;
 }
 
 .movieDataContainer {
@@ -248,6 +252,11 @@ nav:hover {
     border: 2px solid #f50040;
 }
 
+iframe {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
 
 .content-display {
     display: flex;

@@ -113,6 +113,7 @@ signUpForm.addEventListener("click", signUp)
 
 
 
+
 // Create and access user playlists
 
 document.onclick = function(e) {
@@ -131,23 +132,55 @@ document.onclick = function(e) {
                 const date = data.release_date
                 const runtime = data.runtime
                 const genre = data.genres[0].name
-                console.log(genre)
+
                 let movieInfo = `
                 <i class="fas fa-times" id="closeContent"></i>                
                 <h1 class="extraDataTitle"><b>${title}</b></h1>
-                <h2 class="extraDataDate">Release Date: ${date}</h2>
-                <h3 class="extraDataRuntime">Runtime: ${runtime} min</h3>
-                <h3 class="extraDataGenre">Genre: ${genre}</h3>
+                <h4 class="extraDataDate">Release Date: ${date}</h4>
+                <h4 class="extraDataRuntime">Runtime: ${runtime} min</h4>
+                <h4 class="extraDataGenre">Genre: ${genre}</h4>
                 <hr>
                 <p class="extraDataOverview"><em>${overview}</em></p>
+                <hr>
                 `
 
-                movieContent.innerHTML = movieInfo
                 movieContent.classList.add('content-display')
+                movieContent.innerHTML = movieInfo
 
+                createIframeContainer(id)
+
+                function createIframeContainer(movieId)  {
+                    fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+                        .then(res => res.json())
+                        .then (data => {
+                            let videoArray = data.results
+                            const length = videoArray.length > 1 ? 1 : videoArray.length
+                            const iframeContainer = document.createElement("div");
+                
+                            for (let i = 0; i < length; i++) {
+                                const video = videoArray[i]
+                                const iframe = createIframe(video)
+                                iframeContainer.appendChild(iframe)
+                            }
+                            movieContent.appendChild(iframeContainer)
+                        })
+                }
+                
+                function createIframe(video) {
+                    const iframe = document.createElement("iframe");
+                    iframe.src = `https://www.youtube.com/embed/${video.key}`;
+                    iframe.width = 624;
+                    iframe.height = 350;
+                    iframe.allowFullscreen = true;
+                    iframe.id = 'iframeVideo'
+                  
+                    return iframe;
+                }
+                
                 const closeContentBtn = document.getElementById("closeContent")
                 closeContentBtn.addEventListener("click", function() {
                     this.parentElement.classList.remove('content-display')
+                    
                 })
             })
 

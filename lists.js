@@ -1,5 +1,6 @@
 import {signIn, signUp} from "./authentication/auth.js"
 
+
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
@@ -15,7 +16,7 @@ const watchLaterList = document.getElementById("watchLaterList")
 let user = firebase.auth().currentUser;
 
 if (user) {
-    //signed in
+    console.log(user.uid)
 } else {
     //not signed in
 }
@@ -91,3 +92,40 @@ document.onclick = function(e) {
 
     }
 }
+
+//--------------Login modal-------------------------
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("signup");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+const logout = document.getElementById('logout');
+logout.addEventListener('click', async (e) => {
+    e.preventDefault()
+    await auth.signOut()
+    console.log('user signed out')
+})
+
+const loginForm = document.getElementById('login-button')
+const signUpForm = document.getElementById('signup-button')
+
+loginForm.addEventListener("click", signIn)
+signUpForm.addEventListener("click", signUp)

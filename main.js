@@ -37,7 +37,6 @@ if (submitListInfoBtn) {
       listBuilderInfoDiv.style.display = "none"
       addFilmsDiv.style.display = "flex"
       let listName = listNameTxt.value
-      let arr = []
       firebase.auth().onAuthStateChanged(function (user) {
          if (user) {
             let userId = user.uid
@@ -56,7 +55,6 @@ if (addFilmsSearchBtn) {
       searchResultsDiv.innerHTML = ""
       let userInput = addFilmsSearchTxt.value
       let searchUrl = searchMovieUrl + userInput
-
       fetch(searchUrl)
          .then((res) => res.json())
          .then((data) => {

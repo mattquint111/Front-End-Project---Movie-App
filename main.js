@@ -89,7 +89,11 @@ function createPlaylist(playlistUrl, playlistName) {
                     <i id="watchedBtn" class="far fa-eye"></i>
                     <i id="favoritesBtn" class="fas fa-heart"></i>
                     <i id="watchLaterBtn" class="fas fa-plus"></i>
-                    <i id="playlistsBtn" class="fas fa-ellipsis-h"></i>
+                    <i id="playlistsBtn" class="fas fa-ellipsis-h">
+                        <div class='playlistOption">
+                        
+                        </div>
+                    </i>
                 </div>
             </div>
             <div class="movieDataContainer">
@@ -190,38 +194,78 @@ signUpForm.addEventListener("click", signUp)
 
 // Create and access user playlists
 
-document.onclick = function (e) {
-   console.log(e.target.id)
+document.onclick = function(e) {
+    console.log(e.target.id)
 
-   // select watched movie icon
-   if (e.target.id === "watchedBtn") {
-      const movieId = e.target.parentElement.parentElement.firstElementChild.id
-      getMovieObjectData(movieId)
-   }
+    // select watched movie icon
+    if (e.target.id === "watchedBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        addMovieObjectDataWatched(movieId)
+    }
 
-   // select favorites movie icon
-   if (e.target.id === "favoritesBtn") {
-      const movieId = e.target.parentElement.parentElement.firstElementChild.id
-      getMovieObjectData(movieId)
-   }
+    // select favorites movie icon
+    if (e.target.id === "favoritesBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        addMovieObjectDataFavorites(movieId)
+    }
 
-   // select watch later movie icon
-   if (e.target.id === "watchLaterBtn") {
-      const movieId = e.target.parentElement.parentElement.firstElementChild.id
-      getMovieObjectData(movieId)
-   }
+    // select watch later movie icon
+    if (e.target.id === "watchLaterBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        addMovieObjectDataWatchLater(movieId)
+        
+    }
 
-   // select playlists movie icon
-   if (e.target.id === "playlistsBtn") {
-      const movieId = e.target.parentElement.parentElement.firstElementChild.id
-      getMovieObjectData(movieId)
-   }
+    // select playlists movie icon
+    if (e.target.id === "playlistsBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        getMovieObjectData(movieId)
+    }
 }
 
-function getMovieObjectData(movieId) {
-   fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`
-   )
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+
+function addMovieObjectDataWatchLater(movieId) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+        .then(res => res.json())
+        .then(data =>  {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    let userId = user.uid
+                    db.collection('users').doc(userId).update({
+                        watchLater : firebase.firestore.FieldValue.arrayUnion(data)
+                    })
+                }
+            })
+        })
 }
+
+function addMovieObjectDataWatched(movieId) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+        .then(res => res.json())
+        .then(data =>  {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    let userId = user.uid
+                    db.collection('users').doc(userId).update({
+                        watched : firebase.firestore.FieldValue.arrayUnion(data)
+                    })
+                }
+            })
+        })
+}
+
+function addMovieObjectDataFavorites(movieId) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+        .then(res => res.json())
+        .then(data =>  {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    let userId = user.uid
+                    db.collection('users').doc(userId).update({
+                        favorites : firebase.firestore.FieldValue.arrayUnion(data)
+                    })
+                }
+            })
+        })
+}
+

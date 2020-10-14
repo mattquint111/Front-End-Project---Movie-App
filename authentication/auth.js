@@ -26,15 +26,15 @@ const passwordInput = document.getElementById('password-input')
                 let userObject = {
                     id: user.uid,
                     username: user.email,
-                    playlists: {
-                        watched: [],
-                        favorites: [],
-                        watchLater: [],
-                    }
+                    
+                    watched: [],
+                    favorites: [],
+                    watchLater: [],
+                    
                 }
-                db.collection('users').add(userObject)
+                db.collection('users').doc(user.uid).set(userObject)
                 .then(function(docRef) {
-                    console.log("Document written with ID: ", docRef.id);
+                    console.log("Document written with ID");
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);

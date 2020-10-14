@@ -284,8 +284,5 @@ nav a{
     text-decoration: none;
     cursor: pointer;
   }
-  /*------------------------------------------------------------------
-
-  #playlist-container {
-    display:block
-  }
+  
+  .playlist

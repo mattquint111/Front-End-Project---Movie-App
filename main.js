@@ -56,7 +56,7 @@ function createPlaylist(playlistUrl, playlistName) {
                     <i id="watchLaterBtn" class="fas fa-plus"></i>
                     <i id="playlistsBtn" class="fas fa-ellipsis-h">
                         <div class='playlistOption">
-                        
+                            <span class="playlistName">test playlist</span>
                         </div>
                     </i>
                 </div>

@@ -21,8 +21,8 @@ if (submitButton) {
       searchInput.value = ""
    })
 }
-
-// listener for List Builder button
+/////////////////////////////////////////////BGINNING OF PLAYLIST CREATOR/////////////////////////////////////////////
+// getting elements and creating global variables
 let listNameTxt = document.getElementById("listNameTxt")
 let submitListInfoBtn = document.getElementById("submitListInfoBtn")
 let listBuilderInfoDiv = document.getElementById("listBuilderInfoDiv")
@@ -34,10 +34,12 @@ let addFilmsToListBtn = document.getElementById("addFilmsToListBtn")
 var listName
 var tempArr = []
 
+// first window - gets list name from user
 submitListInfoBtn.addEventListener("click", function () {
    listBuilderInfoDiv.style.display = "none"
    addFilmsDiv.style.display = "flex"
    listName = listNameTxt.value
+   // creates an empty collection and doc to hold the list
    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
          let userId = user.uid
@@ -50,6 +52,7 @@ submitListInfoBtn.addEventListener("click", function () {
    })
 })
 
+// search button
 addFilmsSearchBtn.addEventListener("click", function () {
    searchResultsDiv.innerHTML = ""
    let userInput = addFilmsSearchTxt.value
@@ -69,8 +72,8 @@ addFilmsSearchBtn.addEventListener("click", function () {
       })
 })
 
+// fetches movies added to tempArr and puts them inside the collection under listName
 addFilmsToListBtn.addEventListener("click", function () {
-   console.log(listName)
    for (let i = 0; i < tempArr.length; i++) {
       fetch(
          `https://api.themoviedb.org/3/movie/${tempArr[i]}?api_key=0310c1a97f001b72c2466fdfc9e4f305`
@@ -97,6 +100,7 @@ addFilmsToListBtn.addEventListener("click", function () {
          })
    }
 })
+/////////////////////////////////////////////BGINNING OF PLAYLIST CREATOR/////////////////////////////////////////////
 
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")

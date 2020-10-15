@@ -366,39 +366,7 @@ iframe {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
-/* #test {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-@media (max-width: 1024px){
-    #searchResultsDiv {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-    }
-    .addMoviePoster {
-        width: 90%;
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-    }
-    #test {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-    }
- */
-}
+
 /*==================================Playlist Creator End========================================*/
 
 

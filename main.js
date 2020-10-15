@@ -52,7 +52,6 @@ function createPlaylist(playlistUrl, playlistName) {
                     </i>
                 </div>
             </div>
-            
             `
             const movieObject = document.createElement("div")
             movieObject.classList.add("movieObject")

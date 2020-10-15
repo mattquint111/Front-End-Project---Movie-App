@@ -21,37 +21,40 @@ if (user) {
     //not signed in
 }
 
-let testUser = db.collection('users').doc("mX56MYienWOIgi6VEQRZy5eOlnw1")
 
-testUser.get().then(function (doc) {
-    if (doc.exists) {
+/*==================*/
 
-        const favorites = doc.data().favorites
-        const watched = doc.data().watched
-        const watchLater = doc.data().watchLater
+const displayPlayList = async(title, userId) => {
+    let getList = await db.collection('users').doc(userId).collection('playlist').doc(userId).get()
 
-        createPlaylist(favoritesList, favorites)
-        createPlaylist(watchedList, watched)
-        createPlaylist(watchLaterList, watchLater)
+}
 
+const displayLists = async (listype, playlistName, userId) => {
+    let getList = await db.collection('users').doc(userId).get()
+    let userObject = getList.data()
+    let userListType = userObject[listype]
+    const playList = document.getElementById(playlistName)
+    const movieObject = document.createElement("div")
+    movieObject.classList.add("movieObject")
 
-    }
-})
-
-function createPlaylist(playlistName, playlistArray) {
-    for (let i = 0; i < playlistArray.length; i++) {
-        let movie = playlistArray[i]
-        let movieData = `
+    userListType.forEach((item) => {
+        let poster = `
         <div class="posterContainer">
-            <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+        <img class="moviePoster" src="https://image.tmdb.org/t/p/w300/${item.poster_path}" alt="movie poster" id=${item.id}>
+        <div class="listButtons">
+            <i id="watchedBtn" class="far fa-eye"></i>
+            <i id="favoritesBtn" class="fas fa-heart"></i>
+            <i id="watchLaterBtn" class="fas fa-plus"></i>
+            <i id="watchLaterBtn" class="fas fa-trash-alt"></i>
+            </i>
         </div>
-        `
-
-        let movieObject = document.createElement('div')
-        movieObject.classList.add('movieObject')
-        movieObject.innerHTML = movieData
-        playlistName.appendChild(movieObject)
-    }
+    </div>`
+    
+    const movieObject = document.createElement("div")
+    movieObject.classList.add("movieObject")
+    movieObject.innerHTML = poster
+    playList.appendChild(movieObject)
+    })
 }
 
 //--------------Login modal-------------------------
@@ -94,6 +97,9 @@ loginForm.addEventListener("click", signIn)
 signUpForm.addEventListener("click", signUp)
 
 //-----------------------------
+
+
+
 document.onclick = function (e) {
     const target = e.target
     // console.log(e.target.id)
@@ -131,47 +137,36 @@ document.onclick = function (e) {
             })
 
     }
+
+    if (e.target.id === "deleteBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        console.log(movieId)
+        deleteMovieObjectDataFavorites(movieId)
+     }
 }
 
-/*==================*/
-
-const displayLists = async (listype, listDom, userId) => {
-    let data = await db.collection('users').doc(userId).get()
-    let userObject = data.data()
-    let userListType = userObject[listype]
-
-    userListType.forEach((item) => {
-        console.log(item.poster_path)  
-        let poster = `
-        <div class="posterContainer">
-        <img class="moviePoster" 
-        src="https://image.tmdb.org/t/p/w300/${item.poster_path}" 
-        alt="movie poster" id=${item.id}>
-        <div class="listButtons">
-        <i id="watchedBtn" class="far fa-eye"></i>
-        <i id="favoritesBtn" class="fas fa-heart"></i>
-        <i id="watchLaterBtn" class="fas fa-plus"></i>
-        <i id="playlistsBtn" class="fas fa-ellipsis-h">
-            <div class='playlistOption">
-                <span class="playlistName">test playlist</span>
-            </div>
-        </i>
-    </div>
-</div>
-</div>`              
-        listDom.innerHTML+= poster
-
-    })
-
-    return 
-}
-
+function deleteMovieObjectDataFavorites (deleteId) {
+        console.log('running delete method')
+        console.log(deleteId)
+          firebase.auth().onAuthStateChanged(function (user) {
+             if (user) {
+                let userId = user.uid
+                db.collection("users")
+                   .doc(userId)
+                   .update({
+                   "keywords": firebase.firestore.FieldValue.arrayRemove(deleteId)
+                   })
+             }
+          })
+       
+ }
+ 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         let username = user.uid
-        displayLists('favorites',favoritesList, username)
-        displayLists('watched', watchedList, username)
-        displayLists('watchLater',watchLaterList, username)
+        displayLists('favorites', "favoritesList", username)
+        displayLists('watched', "watchedList", username)
+        displayLists('watchLater',"watchLaterList", username)
 
         
 

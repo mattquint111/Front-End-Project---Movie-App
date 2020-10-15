@@ -368,7 +368,7 @@ iframe {
         grid-row-gap: 0px;
     }
     .addMoviePoster {
-        width: 90%
+        width: 90%;
         height: auto;
     }
 }
@@ -431,6 +431,9 @@ iframe {
         margin: 8rem;
         margin-top: 0px;
         margin-bottom: 0px;
+    }
+    #logout {
+        display: none;
     }
     
     #loginContainer {

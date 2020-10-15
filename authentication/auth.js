@@ -1,6 +1,7 @@
 const usernameInput = document.getElementById('username-input')
 const passwordInput = document.getElementById('password-input')
-
+const loginForm = document.getElementById('login-form')
+const signUpForm = document.getElementById('signup-form')
 
         let playlistContainer = document.getElementById('playlist-container')
         /*
@@ -39,6 +40,7 @@ const passwordInput = document.getElementById('password-input')
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
                 });
+                loginForm.reset()
 
         }
 
@@ -50,6 +52,7 @@ const passwordInput = document.getElementById('password-input')
 
             const getUser = await firebase.auth().signInWithEmailAndPassword(email, password)
             const user = getUser.user
+            loginForm.reset()
             console.log(user)
         }
 

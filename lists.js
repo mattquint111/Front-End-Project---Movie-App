@@ -94,8 +94,10 @@ loginForm.addEventListener("click", signIn)
 signUpForm.addEventListener("click", signUp)
 
 //-----------------------------
+
 document.onclick = function (e) {
     const target = e.target
+    console.log(target)
     // console.log(e.target.id)
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
@@ -121,16 +123,76 @@ document.onclick = function (e) {
                 <p class="extraDataOverview"><em>${overview}</em></p>
                 `
 
-                movieContent.innerHTML = movieInfo
                 movieContent.classList.add('content-display')
+                movieContent.innerHTML = movieInfo
 
+                createIframeContainer(id)
+
+                function createIframeContainer(movieId)  {
+                    fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0310c1a97f001b72c2466fdfc9e4f305`)
+                        .then(res => res.json())
+                        .then (data => {
+                            let videoArray = data.results
+                            const length = videoArray.length > 1 ? 1 : videoArray.length
+                            const iframeContainer = document.createElement("div");
+                
+                            for (let i = 0; i < length; i++) {
+                                const video = videoArray[i]
+                                const iframe = createIframe(video)
+                                iframeContainer.appendChild(iframe)
+                            }
+                            movieContent.appendChild(iframeContainer)
+                        })
+                }
+                
+                function createIframe(video) {
+                    const iframe = document.createElement("iframe");
+                    iframe.src = `https://www.youtube.com/embed/${video.key}`;
+                    iframe.width = 624;
+                    iframe.height = 350;
+                    iframe.allowFullscreen = true;
+                    iframe.id = 'iframeVideo'
+                  
+                    return iframe;
+                }
+                
                 const closeContentBtn = document.getElementById("closeContent")
-                closeContentBtn.addEventListener("click", function () {
+                closeContentBtn.addEventListener("click", function() {
                     this.parentElement.classList.remove('content-display')
+                    
                 })
             })
 
     }
+
+
+    
+/* Probably gonna wanna call a function except it will delete them 
+    // select watched movie icon
+    if (e.target.id === "watchedBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        addMovieObjectDataWatched(movieId)
+    }
+*/
+    // select favorites movie icon
+    if (e.target.id === "favoritesBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        addMovieObjectDataFavorites(movieId)
+    }
+    
+/*
+    // select watch later movie icon
+    if (e.target.id === "watchLaterBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        addMovieObjectDataWatchLater(movieId)
+        
+    }
+
+    // select playlists movie icon
+    if (e.target.id === "playlistsBtn") {
+        const movieId = e.target.parentElement.parentElement.firstElementChild.id
+        getMovieObjectData(movieId)
+    }*/
 }
 
 /*==================*/
@@ -140,9 +202,6 @@ const displayLists = async (listype, listDom, userId) => {
     let userObject = data.data()
     let userListType = userObject[listype]
 
-    const highlight = () => {
-        
-    }
     userListType.forEach((item) => {
         console.log(item.poster_path)
         let poster = `
@@ -152,7 +211,7 @@ const displayLists = async (listype, listDom, userId) => {
                 alt="movie poster" id=${item.id}>
             <div class="listButtons">
                 <i id="watchedBtn" class="far fa-eye"></i>
-                <i id="favoritesBtn" onclick =${highlight}class="fas fa-heart"></i>
+                <i id="favoritesBtn" class="fas fa-heart"></i>
                 <i id="watchLaterBtn" class="fas fa-plus"></i>
                 <i id="playlistsBtn" class="fas fa-ellipsis-h">
                     <div class='playlistOption">
@@ -175,8 +234,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         displayLists('favorites', favoritesList, username)
         displayLists('watched', watchedList, username)
         displayLists('watchLater', watchLaterList, username)
-
-
 
     }
     else {

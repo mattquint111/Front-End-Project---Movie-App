@@ -54,10 +54,6 @@ function createPlaylist(playlistUrl, playlistName) {
                     <i id="watchedBtn" class="far fa-eye"></i>
                     <i id="favoritesBtn" class="fas fa-heart"></i>
                     <i id="watchLaterBtn" class="fas fa-plus"></i>
-                    <i id="playlistsBtn" class="fas fa-ellipsis-h">
-                        <div class='playlistOption">
-                            <span class="playlistName">test playlist</span>
-                        </div>
                     </i>
                 </div>
             </div>
@@ -216,11 +212,6 @@ document.onclick = function(e) {
         
     }
 
-    // select playlists movie icon
-    if (e.target.id === "playlistsBtn") {
-        const movieId = e.target.parentElement.parentElement.firstElementChild.id
-        getMovieObjectData(movieId)
-    }
 }
 
 

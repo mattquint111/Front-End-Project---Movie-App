@@ -38,6 +38,10 @@ button:hover {
     font-size: 1.2em;
 }
 
+#closeSignIn {
+    width: 30px;
+}
+
 #menubutton{
     padding: 20px;
 }

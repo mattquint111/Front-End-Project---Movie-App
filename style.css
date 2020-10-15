@@ -132,7 +132,7 @@ nav:hover {
     position: relative;
     top: 50px;
 }
-
+/*=================================PLAYLIST STYLES============================================*/
 .playlist {
     display: flex;
     flex-direction: column;
@@ -213,6 +213,7 @@ nav:hover {
     color: rgb(179, 0, 255);
     cursor: pointer;
 }
+/*==================================SPOTLIGHT STYLES======================================================*/
 
 .movieDataContainer {
     display: flex;

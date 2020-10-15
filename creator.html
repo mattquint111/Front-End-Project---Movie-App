@@ -16,35 +16,43 @@
 <body>
    <!-- Top Navigation Menu -->
    <nav class="navbar navbar-expand-lg  ">
-      <a class="navbar-brand" href="#">MovieApp</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <i class="fas fa-bars"></i>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars" id='menuButton'></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-               <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">Log In</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">My Lists</a>
-            </li>
-            <li class="nav-item active">
-               <a class="nav-link" href="creator.html">Create Playlist <span class="sr-only">(current)</span></a>
-            </li>
-         </ul>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"
+              ><p class="navbarText">Home</p><span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lists.html"><p class="navbarText">Lists</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="creator.html"><p class="navbarText">Create Playlists</p></a>
+          </li>
+        </ul>
       </div>
-      <button id="signup" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-         Signup
+      <div class="loginButtons">
+        <button id="signIn" class="button" type="submit">
+        Sign In
       </button>
-      <button id="logout" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-         logOut
+      <button id="logout" class="button" type="submit">
+        Log Out
       </button>
-   </nav>
+      </div>
+      
+    </nav>
 
    <div class='mainContainer'>
 

@@ -124,22 +124,15 @@ function createPlaylist(playlistUrl, playlistName) {
             let movie = movieArray[i]
             let movieData = `
             <div class="posterContainer">
-                <img class="moviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+                <img class="moviePoster" src="https://image.tmdb.org/t/p/w300/${movie.poster_path}" alt="movie poster" id=${movie.id}>
                 <div class="listButtons">
                     <i id="watchedBtn" class="far fa-eye"></i>
                     <i id="favoritesBtn" class="fas fa-heart"></i>
                     <i id="watchLaterBtn" class="fas fa-plus"></i>
-                    <i id="playlistsBtn" class="fas fa-ellipsis-h">
-                        <div class='playlistOption">
-                        
-                        </div>
                     </i>
                 </div>
             </div>
-            <div class="movieDataContainer">
-                <span class="movieTitle">${movie.original_title}</span>
-                <span class="movieReleaseDate">${movie.release_date}</span>
-            </div>
+            
             `
             const movieObject = document.createElement("div")
             movieObject.classList.add("movieObject")
@@ -149,56 +142,11 @@ function createPlaylist(playlistUrl, playlistName) {
       })
 }
 
-// Event Delegation
-document.onclick = function (event) {
-   const target = event.target
-   let user = firebase.auth().currentUser
-
-   if (target.tagName.toLowerCase() === "img") {
-      const movieContent =
-         target.parentElement.parentElement.parentElement.parentElement
-            .nextElementSibling
-      movieContent.classList.add("content-display")
-
-      if (target.tagName.toLowerCase() === "img") {
-         const movieContent =
-            target.parentElement.parentElement.parentElement.parentElement
-               .nextElementSibling
-         movieContent.classList.toggle("content-display")
-
-         const movieSpotlight = async (playlistUrl, spotlight) => {
-            const response = await fetch(playlistUrl)
-            const movieArray = await response.json()
-            const resultsArray = movieArray.results
-
-            highlight.innerHTML = `
-            <div class = "movie-spotlight">
-                <div id = "spotlight-title">${specificMovie[0].original_title}</div>
-                <div>Release date:${specificMovie[0].release_date}</div>
-                <div>Description: ${specificMovie[0].overview}</div>
-                <div>Ratings: ${specificMovie[0].vote_average} in ${specificMovie[0].vote_count} votes</div>
-            </div>
-            `
-         }
-         movieSpotlight(nowPlayingUrl, "nowPlayingContent")
-         movieSpotlight(popularUrl, "popularContent")
-         movieSpotlight(topRatedUrl, "topRatedContent")
-         movieSpotlight(upcomingUrl, "upcomingContent")
-
-         console.log(resultsArray)
-      }
-      movieSpotlight(nowPlayingUrl, "nowPlayingContent")
-      movieSpotlight(popularUrl, "popularContent")
-      movieSpotlight(topRatedUrl, "topRatedContent")
-      movieSpotlight(upcomingUrl, "upcomingContent")
-   }
-}
-
 //--------------Login modal-------------------------
 var modal = document.getElementById("myModal")
 
 // Get the button that opens the modal
-var btn = document.getElementById("signup")
+var btn = document.getElementById("signIn")
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0]
@@ -228,13 +176,96 @@ logout.addEventListener("click", async (e) => {
 
 const loginForm = document.getElementById("login-button")
 const signUpForm = document.getElementById("signup-button")
+const usernameInput = document.getElementById("username-input")
+const passwordInput = document.getElementById("password-input")
 
-loginForm.addEventListener("click", signIn)
-signUpForm.addEventListener("click", signUp)
+loginForm.addEventListener("click", () => {
+   signIn()
+   usernameInput.value = ""
+   passwordInput.value = ""
+})
+signUpForm.addEventListener("click", () => {
+   signUp()
+   usernameInput.value = ""
+   passwordInput.value = ""
+})
 
 // Create and access user playlists
+
 document.onclick = function (e) {
-   console.log(e.target.id)
+   const target = e.target
+   // console.log(e.target.id)
+   if (target.tagName.toLowerCase() === "img") {
+      const movieContent =
+         target.parentElement.parentElement.parentElement.parentElement
+            .nextElementSibling
+      movieContent.classList.add("content-display")
+      const id = target.id
+
+      fetch(
+         `https://api.themoviedb.org/3/movie/${id}?api_key=0310c1a97f001b72c2466fdfc9e4f305`
+      )
+         .then((res) => res.json())
+         .then((data) => {
+            const title = data.title
+            const overview = data.overview
+            const date = data.release_date
+            const runtime = data.runtime
+            const genre = data.genres[0].name
+
+            let movieInfo = `
+                <i class="fas fa-times" id="closeContent"></i>                
+                <h1 class="extraDataTitle"><b>${title}</b></h1>
+                <h4 class="extraDataDate">Release Date: <b>${date}</b></h4>
+                <h4 class="extraDataRuntime">Runtime: <b>${runtime}</b> min</h4>
+                <h4 class="extraDataGenre">Genre: <b>${genre}</b></h4>
+                <hr>
+                <p class="extraDataOverview"><em>${overview}</em></p>
+                <hr>
+                `
+
+            movieContent.classList.add("content-display")
+            movieContent.innerHTML = movieInfo
+
+            createIframeContainer(id)
+
+            function createIframeContainer(movieId) {
+               fetch(
+                  `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0310c1a97f001b72c2466fdfc9e4f305`
+               )
+                  .then((res) => res.json())
+                  .then((data) => {
+                     let videoArray = data.results
+                     const length =
+                        videoArray.length > 1 ? 1 : videoArray.length
+                     const iframeContainer = document.createElement("div")
+
+                     for (let i = 0; i < length; i++) {
+                        const video = videoArray[i]
+                        const iframe = createIframe(video)
+                        iframeContainer.appendChild(iframe)
+                     }
+                     movieContent.appendChild(iframeContainer)
+                  })
+            }
+
+            function createIframe(video) {
+               const iframe = document.createElement("iframe")
+               iframe.src = `https://www.youtube.com/embed/${video.key}`
+               iframe.width = 624
+               iframe.height = 350
+               iframe.allowFullscreen = true
+               iframe.id = "iframeVideo"
+
+               return iframe
+            }
+
+            const closeContentBtn = document.getElementById("closeContent")
+            closeContentBtn.addEventListener("click", function () {
+               this.parentElement.classList.remove("content-display")
+            })
+         })
+   }
 
    // select watched movie icon
    if (e.target.id === "watchedBtn") {
@@ -252,12 +283,6 @@ document.onclick = function (e) {
    if (e.target.id === "watchLaterBtn") {
       const movieId = e.target.parentElement.parentElement.firstElementChild.id
       addMovieObjectDataWatchLater(movieId)
-   }
-
-   // select playlists movie icon
-   if (e.target.id === "playlistsBtn") {
-      const movieId = e.target.parentElement.parentElement.firstElementChild.id
-      getMovieObjectData(movieId)
    }
 
    // select movies in playlist creator

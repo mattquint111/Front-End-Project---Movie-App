@@ -34,6 +34,10 @@ button:hover {
     border: 2px solid white;
 }
 
+.navbar {
+    font-size: 1.2em;
+}
+
 #menubutton{
     padding: 20px;
 }
@@ -363,9 +367,12 @@ iframe {
 
     .loginButtons {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        
+    }
+
+    #signIn {
+        margin-right: 10px;
     }
 
     .loginButton {

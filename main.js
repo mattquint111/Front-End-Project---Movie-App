@@ -76,13 +76,13 @@ function createPlaylist(playlistUrl, playlistName) {
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("signup");
+var btn = document.getElementById("signIn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
-    modal.style.display = "block";
+    modal.style.display = "block";   
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -106,10 +106,20 @@ logout.addEventListener('click', async (e) => {
 
 const loginForm = document.getElementById('login-button')
 const signUpForm = document.getElementById('signup-button')
+const usernameInput = document.getElementById("username-input")
+const passwordInput = document.getElementById("password-input")
 
-loginForm.addEventListener("click", signIn)
-signUpForm.addEventListener("click", signUp)
 
+loginForm.addEventListener("click", () => {
+    signIn()
+    usernameInput.value = ''
+    passwordInput.value = ''
+})
+signUpForm.addEventListener("click", () => {
+    signUp()
+    usernameInput.value = ''
+    passwordInput.value = ''
+})
 
 
 

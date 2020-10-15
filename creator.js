@@ -88,6 +88,7 @@ if (addFilmsToListBtn) {
                })
             })
       }
+      window.location.href = "lists.html"
    })
 }
 
@@ -147,5 +148,10 @@ document.onclick = function (e) {
    if (e.target.className === "addMoviePoster") {
       tempArr.push(e.target.id)
       console.log(tempArr)
+      if (target.style.border === "3px solid #f50040") {
+         target.style.border = ""
+      } else {
+         target.style.border = "3px solid #f50040"
+      }
    }
 }

@@ -290,7 +290,7 @@ iframe {
     vertical-align: center;
 }
 
-/* Playlist Creator */
+/*==================================Playlist Creator Start======================================*/
 #listBuilderInfoDiv {
     width: 80%;
     margin: 0 auto;
@@ -352,15 +352,27 @@ iframe {
     text-align: center;
 }
 #searchResultsDiv {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
-#addMoviePoster {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 5%;
+@media (max-width: 1024px){
+    #searchResultsDiv {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    .addMoviePoster {
+        width: 90%
+        height: auto;
+    }
 }
-/* Playlist Creator */
+/*==================================Playlist Creator End========================================*/
+
 
 
 /*--------------------------------Movie spotlight styles-----------------------------------*/

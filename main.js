@@ -35,23 +35,24 @@ var listName
 var tempArr = []
 
 // first window - gets list name from user
-submitListInfoBtn.addEventListener("click", function () {
-   listBuilderInfoDiv.style.display = "none"
-   addFilmsDiv.style.display = "flex"
-   listName = listNameTxt.value
-   // creates an empty collection and doc to hold the list
-   firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-         let userId = user.uid
-         db.collection("users")
-            .doc(user.uid)
-            .collection("playlists")
-            .doc(listName)
-            .set({})
-      }
+if (submitListInfoBtn) {
+   submitListInfoBtn.addEventListener("click", function () {
+      listBuilderInfoDiv.style.display = "none"
+      addFilmsDiv.style.display = "flex"
+      listName = listNameTxt.value
+      // creates an empty collection and doc to hold the list
+      firebase.auth().onAuthStateChanged(function (user) {
+         if (user) {
+            let userId = user.uid
+            db.collection("users")
+               .doc(user.uid)
+               .collection("playlists")
+               .doc(listName)
+               .set({})
+         }
+      })
    })
-})
-
+}
 // search button
 addFilmsSearchBtn.addEventListener("click", function () {
    searchResultsDiv.innerHTML = ""

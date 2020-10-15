@@ -140,40 +140,43 @@ const displayLists = async (listype, listDom, userId) => {
     let userObject = data.data()
     let userListType = userObject[listype]
 
+    const highlight = () => {
+        
+    }
     userListType.forEach((item) => {
-        console.log(item.poster_path)  
+        console.log(item.poster_path)
         let poster = `
         <div class="posterContainer">
-        <img class="moviePoster" 
-        src="https://image.tmdb.org/t/p/w300/${item.poster_path}" 
-        alt="movie poster" id=${item.id}>
-        <div class="listButtons">
-        <i id="watchedBtn" class="far fa-eye"></i>
-        <i id="favoritesBtn" class="fas fa-heart"></i>
-        <i id="watchLaterBtn" class="fas fa-plus"></i>
-        <i id="playlistsBtn" class="fas fa-ellipsis-h">
-            <div class='playlistOption">
-                <span class="playlistName">test playlist</span>
+            <img class="moviePoster" 
+                src="https://image.tmdb.org/t/p/w300/${item.poster_path}" 
+                alt="movie poster" id=${item.id}>
+            <div class="listButtons">
+                <i id="watchedBtn" class="far fa-eye"></i>
+                <i id="favoritesBtn" onclick =${highlight}class="fas fa-heart"></i>
+                <i id="watchLaterBtn" class="fas fa-plus"></i>
+                <i id="playlistsBtn" class="fas fa-ellipsis-h">
+                    <div class='playlistOption">
+                        <span class="playlistName">test playlist</span>
+                    </div>
+                </i>
             </div>
-        </i>
-    </div>
-</div>
-</div>`              
-        listDom.innerHTML+= poster
+        </div>
+        `
+        listDom.innerHTML += poster
 
     })
 
-    return 
+    return
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         let username = user.uid
-        displayLists('favorites',favoritesList, username)
+        displayLists('favorites', favoritesList, username)
         displayLists('watched', watchedList, username)
-        displayLists('watchLater',watchLaterList, username)
+        displayLists('watchLater', watchLaterList, username)
 
-        
+
 
     }
     else {

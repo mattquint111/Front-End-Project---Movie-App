@@ -316,10 +316,12 @@ iframe {
   .modal-content {
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
     background-color: #20305b;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid #f50040;
     width: 80%; /* Could be more or less, depending on screen size */
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -331,10 +333,60 @@ iframe {
         margin-top: 0px;
         margin-bottom: 0px;
     }
-  
+    
+    #loginContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inputs {
+        display: flex;
+        outline: none;
+        justify-content: space-around;
+        align-content: baseline;
+        margin-bottom: 10px;
+    }
+
+    .inputs label {
+        margin-right: 5px;
+    }
+    .inputs input {
+        border-radius: 8px;
+        margin-right: 15px;
+    }
+
+    .loginButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .loginButton {
+        width: 50%;
+        margin: 5px;
+        border-radius: 25px;
+        border: 1px solid #f50040;
+        background: none;
+        color: #f50040;
+        cursor: pointer;
+    }
+    .loginButton:hover {
+        background: #f50040;
+        color: white;
+        border: 2px solid white;
+    }
+
+    #not-a-user {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: #fe1351;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -342,7 +394,7 @@ iframe {
   
   .close:hover,
   .close:focus {
-    color: black;
+    color: #fe1351;
     text-decoration: none;
     cursor: pointer;
   }

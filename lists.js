@@ -1,4 +1,4 @@
-import {signIn, signUp} from "./authentication/auth.js"
+import { signIn, signUp } from "./authentication/auth.js"
 
 
 // initial variables
@@ -23,7 +23,7 @@ if (user) {
 
 let testUser = db.collection('users').doc("mX56MYienWOIgi6VEQRZy5eOlnw1")
 
-testUser.get().then(function(doc) {
+testUser.get().then(function (doc) {
     if (doc.exists) {
 
         const favorites = doc.data().favorites
@@ -34,9 +34,9 @@ testUser.get().then(function(doc) {
         createPlaylist(watchedList, watched)
         createPlaylist(watchLaterList, watchLater)
 
-        
+
     }
-}) 
+})
 
 function createPlaylist(playlistName, playlistArray) {
     for (let i = 0; i < playlistArray.length; i++) {
@@ -54,7 +54,47 @@ function createPlaylist(playlistName, playlistArray) {
     }
 }
 
-document.onclick = function(e) {
+//--------------Login modal-------------------------
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("signup");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+//----------Authentication stuff -----------------
+const logout = document.getElementById('logout');
+logout.addEventListener('click', async (e) => {
+    e.preventDefault()
+    await auth.signOut()
+    console.log('user signed out')
+})
+
+const loginForm = document.getElementById('login-button')
+const signUpForm = document.getElementById('signup-button')
+
+loginForm.addEventListener("click", signIn)
+signUpForm.addEventListener("click", signUp)
+
+//-----------------------------
+document.onclick = function (e) {
     const target = e.target
     // console.log(e.target.id)
     if (target.tagName.toLowerCase() === "img") {
@@ -85,7 +125,7 @@ document.onclick = function(e) {
                 movieContent.classList.add('content-display')
 
                 const closeContentBtn = document.getElementById("closeContent")
-                closeContentBtn.addEventListener("click", function() {
+                closeContentBtn.addEventListener("click", function () {
                     this.parentElement.classList.remove('content-display')
                 })
             })
@@ -93,39 +133,51 @@ document.onclick = function(e) {
     }
 }
 
-//--------------Login modal-------------------------
-var modal = document.getElementById("myModal");
+/*==================*/
 
-// Get the button that opens the modal
-var btn = document.getElementById("signup");
+const displayLists = async (listype, listDom, userId) => {
+    let data = await db.collection('users').doc(userId).get()
+    let userObject = data.data()
+    let userListType = userObject[listype]
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    userListType.forEach((item) => {
+        console.log(item.poster_path)  
+        let poster = `
+        <div class="posterContainer">
+        <img class="moviePoster" 
+        src="https://image.tmdb.org/t/p/w300/${item.poster_path}" 
+        alt="movie poster" id=${item.id}>
+        <div class="listButtons">
+        <i id="watchedBtn" class="far fa-eye"></i>
+        <i id="favoritesBtn" class="fas fa-heart"></i>
+        <i id="watchLaterBtn" class="fas fa-plus"></i>
+        <i id="playlistsBtn" class="fas fa-ellipsis-h">
+            <div class='playlistOption">
+                <span class="playlistName">test playlist</span>
+            </div>
+        </i>
+    </div>
+</div>
+</div>`              
+        listDom.innerHTML+= poster
 
-btn.onclick = function () {
-    modal.style.display = "block";
+    })
+
+    return 
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        let username = user.uid
+        displayLists('favorites',favoritesList, username)
+        displayLists('watched', watchedList, username)
+        displayLists('watchLater',watchLaterList, username)
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+        
+
     }
-}
-const logout = document.getElementById('logout');
-logout.addEventListener('click', async (e) => {
-    e.preventDefault()
-    await auth.signOut()
-    console.log('user signed out')
+    else {
+        console.log('no one signed in yet')
+    }
 })
 
-const loginForm = document.getElementById('login-button')
-const signUpForm = document.getElementById('signup-button')
-
-loginForm.addEventListener("click", signIn)
-signUpForm.addEventListener("click", signUp)

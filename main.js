@@ -38,6 +38,16 @@ submitListInfoBtn.addEventListener("click", function () {
    listBuilderInfoDiv.style.display = "none"
    addFilmsDiv.style.display = "flex"
    listName = listNameTxt.value
+   firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+         let userId = user.uid
+         db.collection("users")
+            .doc(user.uid)
+            .collection("playlists")
+            .doc(listName)
+            .set({})
+      }
+   })
 })
 
 addFilmsSearchBtn.addEventListener("click", function () {
@@ -74,19 +84,18 @@ addFilmsToListBtn.addEventListener("click", function () {
                      .doc(userId)
                      .collection("playlists")
                      .doc(listName)
-                     .set({
+                     .update({
                         playlist: firebase.firestore.FieldValue.arrayUnion(
                            data
                         ),
                      })
-                     .catch(e => {
-                         console.log(e)
+                     .catch((e) => {
+                        console.log(e)
                      })
                }
             })
          })
    }
-
 })
 
 // create homepage playlists

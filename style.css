@@ -112,6 +112,7 @@ nav:hover {
     outline: none;
     font-size: 1.5em;
     padding: 5px;
+    width: 100%;
 }
 ::placeholder {
     color: white;
@@ -290,7 +291,7 @@ iframe {
     vertical-align: center;
 }
 
-/* Playlist Creator */
+/*==================================Playlist Creator Start======================================*/
 #listBuilderInfoDiv {
     width: 80%;
     margin: 0 auto;
@@ -352,15 +353,54 @@ iframe {
     text-align: center;
 }
 #searchResultsDiv {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
-#addMoviePoster {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 5%;
+.addMoviePoster {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
-/* Playlist Creator */
+/* #test {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+@media (max-width: 1024px){
+    #searchResultsDiv {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    .addMoviePoster {
+        width: 90%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    #test {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+ */
+}
+/*==================================Playlist Creator End========================================*/
+
 
 
 /*--------------------------------Movie spotlight styles-----------------------------------*/
@@ -418,6 +458,9 @@ iframe {
         margin: 8rem;
         margin-top: 0px;
         margin-bottom: 0px;
+    }
+    #logout {
+        display: none;
     }
     
     #loginContainer {
@@ -510,3 +553,65 @@ iframe {
     display: flex;
 }
 
+/*-----------------------CREATE LISTS PAGE-----------------*/
+
+#listBuilderH1 {
+    color: #f50040;
+}
+
+#listNameTxt {
+    border-radius: 8px;
+    border: 2px solid #f50040;
+    background: #1b284b;
+    width: 400px;
+}
+#listNameTxt:focus {
+    outline: none;
+}
+
+#submitListInfoBtn {
+    background: none;
+    color: #f50040;
+    border: 3px solid #f50040;
+    border-radius: 35px;
+}
+#submitListInfoBtn:hover {
+    background: #f50040;
+    border: 2px solid white;
+    color: white
+}
+
+#addFilmsSearchTxt {
+    border-radius: 8px;
+    border: 2px solid #f50040;
+    background: #1b284b;
+    width: 400px;
+}
+#addFilmsSearchTxt:focus {
+    outline: none;
+}
+
+#addFilmsSearchBtn {
+    background: none;
+    color: #f50040;
+    border: 3px solid #f50040;
+    border-radius: 35px;
+    width: 150px;
+}
+#addFilmsSearchBtn:hover {
+    background: #f50040;
+    border: 2px solid white;
+    color: white
+}
+
+#addFilmsToListBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1b284b;
+    color: white;
+    border: 2px solid white;
+}
+#addFilmsToListBtn:hover {
+    background: #f50040;
+}

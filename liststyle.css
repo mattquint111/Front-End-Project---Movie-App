@@ -1,3 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav {
+    background-color: #16213e;
+}
+nav a{
+    color: #f50040;
+}
+
+
+
+.button {
+    padding: 5px;
+    color: #f50040;
+    background: none;
+    border-color: #f50040;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid #f50040;
+}
+button:hover {
+    background: #f50040;
+    color: white;
+    border: 2px solid white;
+}
+
+.navbar {
+    font-size: 1.2em;
+}
+
+#closeSignIn {
+    width: 30px;
+}
+
+#menubutton{
+    padding: 20px;
+}
+#menuButton:hover {
+    color: white;
+}
+
+.navbarText:hover {
+    color: white;
+}
+
+nav:hover {
+    color: white;
+}
+
+.navbar-toggler {
+    border: 1px solid red;
+    outline: none;
+}
+.navbar-toggler:hover {
+    color: white;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+    color: white
+}
+
+.fa-bars {
+    color: #f50040;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    background: #20305b;
+    padding: 20px 0;
+
+}
+
+.searchBar {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#inputValue {
+    margin: 10px;
+    width: 500px;
+    color: white;
+    background: #26264d;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1.5em;
+    padding: 5px;
+}
+::placeholder {
+    color: white;
+}
+
+#submitButton {
+    padding: 10px 20px;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    color: #f50040;
+    border: 2px solid #f50040;
+}
+#submitButton:hover {
+    background: #f50040;
+    color: white;
+    border: 2px solid white;
+}
+
 
 .playlistsContainer {
     display: flex;
@@ -6,7 +140,7 @@
     position: relative;
     top: 50px;
 }
-
+/*=================================PLAYLIST STYLES============================================*/
 .playlist {
     display: flex;
     flex-direction: column;
@@ -87,3 +221,292 @@
     color: rgb(179, 0, 255);
     cursor: pointer;
 }
+/*==================================SPOTLIGHT STYLES======================================================*/
+
+.movieDataContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px 0;
+}
+
+.movieObject img {
+    border-radius: 8px;
+    cursor: pointer;
+    height: 300px;
+}
+.moviePoster:hover {
+    border: 3px solid #fe2961;
+    transform: scale(1.2);
+}
+
+.movieTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.movieReleaseDate {
+    font-size: .8em;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.movieContent {
+    width: 80%;
+    display: none;
+    background: #16213e;
+    color: white;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid #f50040;
+}
+
+iframe {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+.content-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    width: 90%;
+    padding: 10px;
+}
+.content-display hr {
+    background: white;
+}
+
+#closeContent {
+    align-self: flex-end;
+    color: red;
+    cursor: pointer;
+    padding: 10px;
+}
+
+iframe {
+    vertical-align: center;
+}
+
+/* Playlist Creator */
+#listBuilderInfoDiv {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a2e;
+}
+.builderDiv {
+    height: 60px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin: 3%;
+}
+#listBuilderH1 {
+    color: white;
+}
+#listNameTxt {
+    background-color: #1a1a2e;
+    color: white;
+    text-align: center;
+    border: 3px solid white;
+}
+#listDescrTxt {
+    background-color: #1a1a2e;
+}
+#addFilmsDiv {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#addFilmsBarDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#addFilmsSearchTxt {
+    background-color: #1a1a2e;
+    color:white;
+    height: 70px;
+    width: 150px;
+    text-align: center;
+    border: 3px solid white;
+    margin-right: 2%;
+}
+#addFilmsSearchBtn {
+    width: 100px;
+    height: 70px;
+}
+#addFilmsToListBtn {
+    width: 120px;
+    height: 70px;
+    margin-left: 15%;
+    font-size: 40px;
+    text-align: center;
+}
+#searchResultsDiv {
+    display: flex;
+    flex-direction: row;
+}
+#addMoviePoster {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+}
+/* Playlist Creator */
+
+
+/*--------------------------------Movie spotlight styles-----------------------------------*/
+
+.nowPlayingContent {
+    display: flex;
+    justify-content: center;
+}
+.movie-spotlight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+    color: #46bcf4;
+}
+
+#spotlight-title{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/*----------modal-------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: #20305b;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid #f50040;
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    }
+    #login-form{
+        display: flex;
+        flex-direction: column;
+        margin: 8rem;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    
+    #loginContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inputs {
+        display: flex;
+        outline: none;
+        justify-content: space-around;
+        align-content: baseline;
+        margin-bottom: 10px;
+    }
+
+    .inputs label {
+        margin-right: 5px;
+    }
+    .inputs input {
+        border-radius: 8px;
+        margin-right: 15px;
+    }
+
+    .loginButtons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #signIn {
+        margin-right: 10px;
+    }
+
+    .loginButton {
+        width: 50%;
+        margin: 5px;
+        border-radius: 25px;
+        border: 1px solid #f50040;
+        background: none;
+        color: #f50040;
+        cursor: pointer;
+    }
+    .loginButton:hover {
+        background: #f50040;
+        color: white;
+        border: 2px solid white;
+    }
+
+    #not-a-user {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+  /* The Close Button */
+  .close {
+    color: #fe1351;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #fe1351;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px;
+    background: #1b284d;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #c70035; 
+    background: none;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #f9f7f8; 
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b32340; 
+  }
+/* ---------------------LISTS PAGE------------------------ */
+.savedPlaylist {
+    display: flex;
+}
+

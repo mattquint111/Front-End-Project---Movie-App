@@ -222,23 +222,24 @@ nav a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #1a1a2e;
 }
 .builderDiv {
-    background-color: white;
     height: 60px;
     width: 80%;
     display: flex;
-    border: 2px solid black;
     justify-content: center;
     color: black;
     margin: 3%;
 }
 #listBuilderH1 {
-    color: black;
+    color: white;
 }
 #listNameTxt {
     background-color: #1a1a2e;
+    color: white;
+    text-align: center;
+    border: 3px solid white;
 }
 #listDescrTxt {
     background-color: #1a1a2e;
@@ -249,7 +250,6 @@ nav a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
 }
 #addFilmsBarDiv {
     display: flex;
@@ -259,12 +259,31 @@ nav a{
 #addFilmsSearchTxt {
     background-color: #1a1a2e;
     color:white;
+    height: 70px;
+    width: 150px;
+    text-align: center;
+    border: 3px solid white;
+    margin-right: 2%;
+}
+#addFilmsSearchBtn {
+    width: 100px;
+    height: 70px;
 }
 #addFilmsToListBtn {
-    width: 30px;
-    height: 30px;
-    margin-left: 10%;
-    background-color: lightgreen;
+    width: 120px;
+    height: 70px;
+    margin-left: 15%;
+    font-size: 40px;
+    text-align: center;
+}
+#searchResultsDiv {
+    display: flex;
+    flex-direction: row;
+}
+#addMoviePoster {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
 }
 /* Playlist Creator */
 

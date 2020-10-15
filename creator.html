@@ -51,24 +51,28 @@
 
       <!-- Div that hold the inputs for list name and description -->
       <div id="listBuilderInfoDiv">
+         <br><br><br>
          <h1 id="listBuilderH1">List Builder</h1>
          <div class="builderDiv">
             <input type="text" placeholder="Add List Name" id="listNameTxt">
          </div>
          <div class="builderDiv">
-            <button id="submitListInfoBtn">Add Items</button>
+            <button type="button" class="btn btn-light" id="submitListInfoBtn">Add Movies to List</button>
          </div>
       </div>
 
       <!-- This menu pops out when they click add items -->
       <!-- It holds the searched values and allows you to select them in a group before pressing the add button -->
       <div id="addFilmsDiv" style="display: none;">
+         <br><br><br>
          <div id="addFilmsBarDiv">
             <!-- PLACEHOLDER: back button of some kind, like an X, that goes back to the listBuilderInfoDiv so they can make changes-->
             <input type="text" id="addFilmsSearchTxt" placeholder="Search Films">
-            <button id="addFilmsSearchBtn">Search</button>
-            <button id="addFilmsToListBtn">+</button> <!-- Make it a green plus button in CSS -->
+            <button type="button" class="btn btn-light" id="addFilmsSearchBtn">Search</button>
+            <button id="addFilmsToListBtn" type="button" class="btn btn-success">+</button>
+            <!-- Make it a green plus button in CSS -->
          </div>
+         <br><br>
          <div id="searchResultsDiv"></div>
       </div>
 

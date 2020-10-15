@@ -117,15 +117,21 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <div id="web-app">
-          <div id="container">
+          <div id="loginContainer">
             <form id="login-form">
-              <label for="username">Username: </label>
-              <input class=login-input id="username-input" type="email" required>
-              <label for="password">Password: </label>
-              <input class=login-input id="password-input" type="password" required>
-              <button id="login-button">Login</button>
+              <div class="inputs">
+                <label for="username">Username: </label>
+                <input class=login-input id="username-input" type="email" required>
+                <label for="password">Password: </label>
+                <input class=login-input id="password-input" type="password" required>
+              </div>
+              
+              <div class='loginButtons'>
+                <button class="loginButton"id="login-button">Login</button>
+                <button class="loginButton" id="signup-button">Sign up</button>
+              </div>
+              
               <p id = "not-a-user">Not a user? Join today!</p>
-              <button id="signup-button">Sign up</button>
             </form>
           </div>
         </div>

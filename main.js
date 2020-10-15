@@ -136,9 +136,9 @@ document.onclick = function(e) {
                 let movieInfo = `
                 <i class="fas fa-times" id="closeContent"></i>                
                 <h1 class="extraDataTitle"><b>${title}</b></h1>
-                <h4 class="extraDataDate">Release Date: ${date}</h4>
-                <h4 class="extraDataRuntime">Runtime: ${runtime} min</h4>
-                <h4 class="extraDataGenre">Genre: ${genre}</h4>
+                <h4 class="extraDataDate">Release Date: <b>${date}</b></h4>
+                <h4 class="extraDataRuntime">Runtime: <b>${runtime}</b> min</h4>
+                <h4 class="extraDataGenre">Genre: <b>${genre}</b></h4>
                 <hr>
                 <p class="extraDataOverview"><em>${overview}</em></p>
                 <hr>

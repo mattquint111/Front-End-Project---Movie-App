@@ -4,74 +4,111 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Movie App v2.0</title>
+   <title>Movie App</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
-
-
    <!-- Top Navigation Menu -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">MovieApp</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+   <nav class="navbar navbar-expand-lg  ">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars" id='menuButton'></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-               <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">Log in</a>
-            </li>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">My Lists</a>
-            </li>
-            <li class="nav-item active">
-               <a class="nav-link" href="creator.html">List Maker<span class="sr-only">(current)</span></a>
-            </li>
-         </ul>
-         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchTxt">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-         </form>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"
+              ><p class="navbarText">Home</p><span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lists.html"><p class="navbarText">Lists</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="creator.html"><p class="navbarText">Create Playlists</p></a>
+          </li>
+        </ul>
       </div>
-   </nav>
+      <div class="loginButtons">
+        <button id="signIn" class="button" type="submit">
+        Sign In
+      </button>
+      <button id="logout" class="button" type="submit">
+        Log Out
+      </button>
+      </div>
+      
+    </nav>
 
-   <!-- Div that hold the inputs for list name and  -->
-   <div id="listBuilderInfoDiv">
-      <h1 id="listBuilderH1">List Builder</h1>
-      <div class="builderDiv">
-         <input type="text" placeholder="Add List Name" id="listNameTxt">
+   <div class='mainContainer'>
+
+
+      <!-- Div that hold the inputs for list name and description -->
+      <div id="listBuilderInfoDiv">
+         <br><br><br>
+         <h1 id="listBuilderH1">List Builder</h1>
+         <div class="builderDiv">
+            <input type="text" placeholder="Add List Name" id="listNameTxt">
+         </div>
+         <div class="builderDiv">
+            <button type="button" class="btn btn-light" id="submitListInfoBtn">Add Movies to List</button>
+         </div>
       </div>
-      <div class="builderDiv">
-         <input type="text" placeholder="Add List Description" id="listDescrTxt">
+
+      <!-- This menu pops out when they click add items -->
+      <!-- It holds the searched values and allows you to select them in a group before pressing the add button -->
+      <div id="addFilmsDiv" style="display: none;">
+         <br><br><br>
+         <div id="addFilmsBarDiv">
+            <!-- PLACEHOLDER: back button of some kind, like an X, that goes back to the listBuilderInfoDiv so they can make changes-->
+            <input type="text" id="addFilmsSearchTxt" placeholder="Search Films">
+            <button type="button" class="btn btn-light" id="addFilmsSearchBtn">Search</button>
+            <button id="addFilmsToListBtn" type="button" class="btn btn-success">+</button>
+            <!-- Make it a green plus button in CSS -->
+         </div>
+         <br><br>
+         <div id="searchResultsDiv"></div>
       </div>
-      <div class="builderDiv">
-         <button id="submitListInfoBtn">Add Items</button>
-      </div>
+
    </div>
 
-   <!-- This menu pops out when they click add items -->
-   <!-- It holds the searched values and allows you to select them in a group before pressing the add button -->
-   <div id="addFilmsDiv">
-      <div id="addFilmsBarDiv">
-         <!-- PLACEHOLDER: back button of some kind, like an X, that goes back to the listBuilderInfoDiv so they can make changes-->
-         <input type="text" id="addFilmsSearchTxt" placeholder="Search Films, Tv Shows, and People">
-         <button id="addFilmsToListBtn">+</button> <!-- Make it a green plus button in CSS -->
+   <!-- The Modal -->
+   <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+         <span class="close">&times;</span>
+         <div id="web-app">
+            <div id="container">
+               <form id="login-form">
+                  <label for="username">Username: </label>
+                  <input class=login-input id="username-input" type="email" required>
+                  <label for="password">Password: </label>
+                  <input class=login-input id="password-input" type="password" required>
+                  <button id="login-button">Login</button>
+                  <p id="not-a-user">Not a user? Join today!</p>
+                  <button id="signup-button">Sign up</button>
+               </form>
+            </div>
+         </div>
       </div>
-      <div id="searchResultsDiv"></div>
+
    </div>
-
-
+   <!------------------------------Firebase Scripts BELOW------------------------------------>
    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
@@ -84,14 +121,15 @@
          storageBucket: "movieapp-3365a.appspot.com",
          messagingSenderId: "845732737286",
          appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
-         measurementId: "G-HTVFL47E1X"
-      }
+         measurementId: "G-HTVFL47E1X",
+      };
       firebase.initializeApp(firebaseConfig);
 
-      const auth = firebase.auth()</script>
-
+      const auth = firebase.auth();
+      var db = firebase.firestore()</script>
    </script>
-   <script src="creator.js"></script>
+
+   <script type="module" src="main.js"></script>
 
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

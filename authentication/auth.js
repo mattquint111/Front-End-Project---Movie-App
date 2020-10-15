@@ -30,8 +30,7 @@ const signUpForm = document.getElementById('signup-form')
                     
                     watched: [],
                     favorites: [],
-                    watchLater: [],
-                    
+                    watchLater: [], 
                 }
                 db.collection('users').doc(user.uid).set(userObject)
                 .then(function(docRef) {
@@ -40,8 +39,7 @@ const signUpForm = document.getElementById('signup-form')
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
                 });
-                loginForm.reset()
-
+                db.collection('users').doc(user.uid).collection('playlists').doc(user.uid).set({})
         }
 
         //signIn method

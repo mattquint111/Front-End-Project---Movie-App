@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App</title>
+    <title>Flix Lists</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -22,7 +22,6 @@
   <body>
     <!-- Top Navigation Menu -->
     <nav class="navbar navbar-expand-lg  ">
-      <a class="navbar-brand" href="index.html"><p class="navbarText">MovieApp</p></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -43,9 +42,6 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><p class="navbarText">Log In</p></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="lists.html"><p class="navbarText">Lists</p></a>
           </li>
           <li class="nav-item">
@@ -54,11 +50,11 @@
         </ul>
       </div>
       <div class="loginButtons">
-        <button id="signup" class="button" type="submit">
-        Signup
+        <button id="signIn" class="button" type="submit">
+        Sign In
       </button>
       <button id="logout" class="button" type="submit">
-        logOut
+        Log Out
       </button>
       </div>
       
@@ -67,17 +63,18 @@
   <div class='mainContainer'>
 
     <div class="searchContainer">
-      
+
       <div class="searchBar">
-        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off" autocomplete="off" spellcheck="false">
+        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off"
+          autocomplete="off" spellcheck="false">
         <button type='submit' id="submitButton" value='Submit'>Submit</button>
       </div>
-      
+
       <div class="playlist" id="searchContainer">
         <div class="searchPlaylistContent" id='searchedList'></div>
       </div>
       <div class="movieContent" id="searchedContent"></div>
-    
+
     </div>
 
     <div class="playlistsContainer">
@@ -115,7 +112,7 @@
 
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" id="closeSignIn">&times;</span>
         <div id="web-app">
           <div id="loginContainer">
             <form id="login-form">
@@ -136,7 +133,6 @@
           </div>
         </div>
       </div>
-  
     </div>
     <!------------------------------Firebase Scripts BELOW------------------------------------>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
@@ -159,7 +155,7 @@
       var db = firebase.firestore()
   </script>
 
-  <script type = "module" src="main.js"></script>
+  <script type="module" src="main.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

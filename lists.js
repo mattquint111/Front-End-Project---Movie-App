@@ -10,15 +10,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
-const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
-const nowPlayingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
-const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
-const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`
-const upcomingUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
-
-const favoritesList = document.getElementById("favoritesList")
-const watchedList = document.getElementById("watchedList")
-const watchLaterList = document.getElementById("watchLaterList")
 
 let user = firebase.auth().currentUser;
 

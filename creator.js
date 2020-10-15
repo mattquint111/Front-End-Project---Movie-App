@@ -49,9 +49,12 @@ if (addFilmsSearchBtn) {
             console.log(movieArray)
             for (let i = 0; i < movieArray.length; i++) {
                let movie = movieArray[i]
-               let movieObject = `
+               let movieData = `
                 <img class="addMoviePoster" src="https://image.tmdb.org/t/p/w200/${movie.poster_path}" alt="movie poster" id=${movie.id}>`
-               searchResultsDiv.insertAdjacentHTML("afterend", movieObject)
+               let movieObject = document.createElement("div")
+               movieObject.classList.add("movieObject")
+               movieObject.innerHTML = movieData
+               searchResultsDiv.appendChild(movieObject)
             }
          })
    })

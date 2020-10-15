@@ -99,16 +99,8 @@ const signUpForm = document.getElementById("signup-button")
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 
-loginForm.addEventListener("click", () => {
-   signIn()
-   usernameInput.value = ""
-   passwordInput.value = ""
-})
-signUpForm.addEventListener("click", () => {
-   signUp()
-   usernameInput.value = ""
-   passwordInput.value = ""
-})
+loginForm.addEventListener("click", signIn)
+signUpForm.addEventListener("click", signUp)
 
 // Create and access user playlists
 

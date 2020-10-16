@@ -89,7 +89,7 @@ git clone https://github.com/mattquint111/Front-End-Project---Movie-App
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-![Alt Text](/images/homepage scroll.gif)
+![Alt text](DigitalCrafts/Front-End-Project---Movie-App/images/scrollandlookatmovie.gif) / ![](DigitalCrafts/Front-End-Project---Movie-App/images/scrollandlookatmovie.gif)
 
 
 <!-- CONTRIBUTING -->

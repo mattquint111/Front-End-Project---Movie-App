@@ -12,14 +12,29 @@ body {
 nav {
     background-color: #16213e;
 }
+
 nav a{
     color: white;
 }
-.navbar{
-    height: 4.1rem;
+nav a:hover {
+    color: #f50040;
+}
+.nav-link:hover {
+    color: #f50040;
 }
 
+/* .navbar{
+    height: 4.1rem;
+} */
 
+
+
+.navbarText{
+    letter-spacing: 2px;
+}
+.navbarText:focus {
+    color: #f50040;
+}
 
 .button {
     padding: 5px;
@@ -186,6 +201,11 @@ nav:hover {
     color: #e92748;
     padding: 0.8%;
     border: solid #e92748;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
 
 
@@ -251,8 +271,8 @@ nav:hover {
     color: rgb(39, 255, 6);
     cursor: pointer;
 }
-#playlistsBtn:hover {
-    color: rgb(179, 0, 255);
+#trashBtn:hover {
+    color: rgb(179, 0, 255) !important;
     cursor: pointer;
 }
 /*==================================SPOTLIGHT STYLES======================================================*/
@@ -636,4 +656,8 @@ iframe {
 }
 #addFilmsToListBtn:hover {
     background: #f50040;
+}
+
+#listBuilderH1 {
+    letter-spacing: 2px;
 }

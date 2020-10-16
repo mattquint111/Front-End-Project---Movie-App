@@ -89,9 +89,9 @@ git clone https://github.com/mattquint111/Front-End-Project---Movie-App
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-![Alt text](DigitalCrafts/Front-End-Project---Movie-App/images/scrollandlookatmovie.gif) / ![](DigitalCrafts/Front-End-Project---Movie-App/images/scrollandlookatmovie.gif)
-
-
+![Alt text](
+![search](https://user-images.githubusercontent.com/25253212/96280201-b07dff80-0fa5-11eb-8a57-027c93fef6b8.gif)
+)
 <!-- CONTRIBUTING -->
 ## Contributing
 

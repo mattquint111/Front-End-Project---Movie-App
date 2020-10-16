@@ -35,6 +35,13 @@ submitListInfoBtn.addEventListener("click", function () {
             .collection("playlists")
             .doc(listName)
             .set({})
+
+         db.collection("users")
+         .doc(user.uid)
+         .update({
+            playlistsKeys: firebase.firestore.FieldValue.arrayUnion(
+               listName)
+            })
       }
    })
 })

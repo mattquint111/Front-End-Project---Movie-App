@@ -1,10 +1,10 @@
 import { signIn, signUp } from "./authentication/auth.js"
 firebase.auth().onAuthStateChanged(function(user) {
    if (user) {
-      btn.style.display("none")
+      btn.style.display = "none"
    }
    else {
-      logout.style.display("none")
+      logout.style.display = "none"
    }
 })
 
@@ -21,15 +21,87 @@ if (user) {
 
 
 /*==================*/
+let temp = []
+let arr = []
+const playlistDisplay = (userId) => {
+    db.collection('users').doc(userId).get()
+    .then((item) => {
+        let result = item.data()
+        let keyArray = result.playlistsKeys
 
-const displayPlayList = async(title, userId) => {
-    let getList = await db.collection('users').doc(userId).collection('playlist').doc(userId).get()
+    keyArray.forEach((item)=>{
+        let playlist = `
+        <div class="playlist savedPlaylist">
+        <h1 class="playlistLabel">${item} Playlist</h1>
+        <div class="playlistContent" id="${item}List"></div>
+            </div>
+        <div class="movieContent" id="${item}Content"></div>
+        `
+        let playlistsContainer = document.querySelector('.playlistsContainer')
+        console.log(playlistsContainer)
 
+        playlistsContainer.insertAdjacentHTML('afterbegin',playlist)
+
+
+    db.collection('users').doc(userId).collection('playlists').doc(item).get()
+        .then((title)=>{
+            console.log(item)
+            let keyContent = title.data()
+            let movieData = keyContent.playlist
+            console.log(movieData)
+
+            //let keyContentarr = keyContent.playlist
+
+            createPlaylist(movieData,item)
+
+            })
+       
+    })
+    })
+
+    let playlistObject = playlistDisplay()
+    console.log(playlistObject)
 }
+
+
+/*==========================================================*/
+function createPlaylist(playlistArray, playlistName) {
+    
+
+    //array of movie objects
+    const movieArray = playlistArray
+
+    const playList = document.getElementById(`${playlistName}List`)
+    const movieObject = document.createElement("div")
+    movieObject.classList.add("movieObject")
+
+    for (let i = 0; i < movieArray.length; i++) {
+       let movie = movieArray[i]
+       let movieData = `
+       <div class="posterContainer">
+           <img class="moviePoster" src="https://image.tmdb.org/t/p/w300/${movie.poster_path}" alt="movie poster" id=${movie.id}>
+           <div class="listButtons">
+               <i id="watchedBtn" class="far fa-eye"></i>
+               <i id="favoritesBtn" class="fas fa-heart"></i>
+               <i id="watchLaterBtn" class="fas fa-plus"></i>
+               </i>
+           </div>
+       </div>
+       
+       `
+       const movieObject = document.createElement("div")
+       movieObject.classList.add("movieObject")
+       movieObject.innerHTML = movieData
+       playList.appendChild(movieObject)
+    }
+}
+
+/*=================================================*/
 
 const displayLists = async (listype, playlistName, userId) => {
     let getList = await db.collection('users').doc(userId).get()
     let userObject = getList.data()
+    console.log(getList)
     let userListType = userObject[listype]
     const playList = document.getElementById(playlistName)
     const movieObject = document.createElement("div")
@@ -165,6 +237,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         displayLists('favorites', "favoritesList", username)
         displayLists('watched', "watchedList", username)
         displayLists('watchLater',"watchLaterList", username)
+        playlistDisplay(username)
+
 
         
 

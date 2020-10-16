@@ -365,6 +365,10 @@ iframe {
 }
 #listBuilderH1 {
     color: white;
+    border: 2px solid;
+    width: 70%;
+    text-align: center;
+    padding: 10px;
 }
 #listNameTxt {
     background-color: #1a1a2e;
@@ -656,3 +660,4 @@ iframe {
 #listBuilderH1 {
     letter-spacing: 2px;
 }
+

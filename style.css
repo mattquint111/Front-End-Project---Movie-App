@@ -16,9 +16,9 @@ nav {
 nav a{
     color: white;
 }
-nav a:hover {
+/* nav a:hover {
     color: #f50040;
-}
+} */
 .nav-link:hover {
     color: #f50040;
 }
@@ -66,11 +66,11 @@ button:hover {
 }
 
 .navbarText:hover {
-    color: white;
+    color: #f50040;
 }
 
 nav:hover {
-    color: white;
+    color: #f50040;
 }
 
 .navbar-toggler {
@@ -86,7 +86,7 @@ nav:hover {
 .navbar-toggler-icon:focus {
     outline: none;
     box-shadow: none;
-    color: white
+    color: #f50040;
 }
 .nav-item {
     display: flex;
@@ -112,6 +112,8 @@ nav:hover {
     margin-top: 1rem;
 
 }
+
+
 /*========================================================*/
 
 .fa-bars {

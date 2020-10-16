@@ -1,16 +1,5 @@
 import { signIn, signUp } from "./authentication/auth.js"
-<<<<<<< HEAD
 
-=======
-firebase.auth().onAuthStateChanged(function(user) {
-   if (user) {
-      btn.style.display = "none"
-   }
-   else {
-      logout.style.display = "none"
-   }
-})
->>>>>>> list-page-spotlight
 
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
@@ -248,12 +237,11 @@ firebase.auth().onAuthStateChanged(function (user) {
         displayLists('watched', "watchedList", username)
         displayLists('watchLater',"watchLaterList", username)
         playlistDisplay(username)
-
-
-        
+        btn.style.display = "none"
 
     }
     else {
+        logout.style.display = "none"
         console.log('no one signed in yet')
     }
 })

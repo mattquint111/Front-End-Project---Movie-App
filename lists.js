@@ -1,5 +1,13 @@
-import { signIn, signUp } from "./authentication/auth.js"
 
+import { signIn, signUp } from "./authentication/auth.js"
+firebase.auth().onAuthStateChanged(function(user) {
+   if (user) {
+      btn.style.display = "none"
+   }
+   else {
+      logout.style.display = "none"
+   }
+})
 
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305";
@@ -120,7 +128,6 @@ const displayLists = async (listype, playlistName, userId) => {
     })
 }
 
-
 //--------------Login modal-------------------------
 var modal = document.getElementById("myModal")
 
@@ -132,8 +139,6 @@ var span = document.getElementsByClassName("close")[0]
 
 btn.onclick = function () {
    modal.style.display = "block"
-   btn.style.display = "none"
-   logout.style.display = "block"
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -147,20 +152,17 @@ window.onclick = function (event) {
       modal.style.display = "none"
    }
 }
+
 //----------Authentication stuff -----------------
-const logout = document.getElementById("logout")
-logout.addEventListener("click", async (e) => {
-   e.preventDefault()
-   await auth.signOut()
-   console.log("user signed out")
-   btn.style.display = "block"
-   logout.style.display = "none"
+const logout = document.getElementById('logout');
+logout.addEventListener('click', async (e) => {
+    e.preventDefault()
+    await auth.signOut()
+    console.log('user signed out')
 })
 
 const loginForm = document.getElementById("login-button")
 const signUpForm = document.getElementById("signup-button")
-const usernameInput = document.getElementById("username-input")
-const passwordInput = document.getElementById("password-input")
 
 loginForm.addEventListener("click", signIn)
 signUpForm.addEventListener("click", signUp)
@@ -237,11 +239,12 @@ firebase.auth().onAuthStateChanged(function (user) {
         displayLists('watched', "watchedList", username)
         displayLists('watchLater',"watchLaterList", username)
         playlistDisplay(username)
-        btn.style.display = "none"
+
+
+        
 
     }
     else {
-        logout.style.display = "none"
         console.log('no one signed in yet')
     }
 })

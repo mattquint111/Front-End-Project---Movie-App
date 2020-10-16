@@ -19,12 +19,16 @@ nav a{
     height: 4.1rem;
 } */
 
+.nav-link:hover {
+    color: #f50040;
+}
+
 .navbarText{
     letter-spacing: 2px;
 }
-.navbarText:focus {
+/* .navbarText:focus {
     color: #f50040;
-}
+} */
 
 
 
@@ -58,11 +62,11 @@ button:hover {
 }
 
 .navbarText:hover {
-    color: white;
+    color: #f50040;
 }
 
 nav:hover {
-    color: white;
+    color: #f50040;
 }
 
 .navbar-toggler {

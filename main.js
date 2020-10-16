@@ -168,8 +168,8 @@ document.onclick = function (e) {
             function createIframe(video) {
                const iframe = document.createElement("iframe")
                iframe.src = `https://www.youtube.com/embed/${video.key}`
-               iframe.width = 624
-               iframe.height = 350
+               iframe.width = 325
+               iframe.height = 275
                iframe.allowFullscreen = true
                iframe.id = "iframeVideo"
 

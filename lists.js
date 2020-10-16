@@ -201,6 +201,39 @@ document.onclick = function (e) {
                 movieContent.innerHTML = movieInfo
                 movieContent.classList.add('content-display')
 
+                createIframeContainer(id)
+
+                function createIframeContainer(movieId) {
+                   fetch(
+                      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0310c1a97f001b72c2466fdfc9e4f305`
+                   )
+                      .then((res) => res.json())
+                      .then((data) => {
+                         let videoArray = data.results
+                         const length =
+                            videoArray.length > 1 ? 1 : videoArray.length
+                         const iframeContainer = document.createElement("div")
+    
+                         for (let i = 0; i < length; i++) {
+                            const video = videoArray[i]
+                            const iframe = createIframe(video)
+                            iframeContainer.appendChild(iframe)
+                         }
+                         movieContent.appendChild(iframeContainer)
+                      })
+                }
+    
+                function createIframe(video) {
+                   const iframe = document.createElement("iframe")
+                   iframe.src = `https://www.youtube.com/embed/${video.key}`
+                   iframe.width = 325
+                   iframe.height = 275
+                   iframe.allowFullscreen = true
+                   iframe.id = "iframeVideo"
+    
+                   return iframe
+                }
+
                 const closeContentBtn = document.getElementById("closeContent")
                 closeContentBtn.addEventListener("click", function () {
                     this.parentElement.classList.remove('content-display')

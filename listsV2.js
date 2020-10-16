@@ -1,11 +1,5 @@
 import { signIn, signUp } from "./authentication/auth.js"
-firebase.auth().onAuthStateChanged(function (user) {
-   if (user) {
-      btn.style.display = "none"
-   } else {
-      logout.style.display = "none"
-   }
-})
+
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {

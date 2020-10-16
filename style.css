@@ -218,7 +218,7 @@ nav:hover {
     color: rgb(39, 255, 6);
     cursor: pointer;
 }
-#playlistsBtn:hover {
+#trashBtn:hover {
     color: rgb(179, 0, 255);
     cursor: pointer;
 }
@@ -595,3 +595,4 @@ iframe {
 #addFilmsToListBtn:hover {
     background: #f50040;
 }
+

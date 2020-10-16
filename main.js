@@ -50,7 +50,8 @@ function createPlaylist(playlistUrl, playlistName) {
                     <i id="watchedBtn" class="far fa-eye"></i>
                     <i id="favoritesBtn" class="fas fa-heart"></i>
                     <i id="watchLaterBtn" class="fas fa-plus"></i>
-                    </i>
+                    <i id="trashBtn" class="fas fa-trash-alt"></i>
+                    
                 </div>
             </div>
             `

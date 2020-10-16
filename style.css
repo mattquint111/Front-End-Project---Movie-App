@@ -13,7 +13,10 @@ nav {
     background-color: #16213e;
 }
 nav a{
-    color: #f50040;
+    color: white;
+}
+.navbar{
+    height: 4.1rem;
 }
 
 
@@ -34,12 +37,10 @@ button:hover {
     border: 2px solid white;
 }
 
-.navbar {
-    font-size: 1.2em;
-}
+
 
 #closeSignIn {
-    width: 30px;
+    width: 20px;
 }
 
 #menubutton{
@@ -72,6 +73,31 @@ nav:hover {
     box-shadow: none;
     color: white
 }
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbarText{
+    margin-top: 1rem;
+}
+#logo{
+    color: #f50040;
+    font-family: 'Bebas Neue';
+    font-size: 2rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+
+}
+/*========================================================*/
 
 .fa-bars {
     color: #f50040;
@@ -93,6 +119,9 @@ nav:hover {
     margin-top: 50px;
     background: #20305b;
     padding: 20px 0;
+    margin-right: 5%;
+    margin-left: 5%;
+
 
 }
 
@@ -101,6 +130,7 @@ nav:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 10px;
 }
 
 #inputValue {
@@ -152,7 +182,10 @@ nav:hover {
 }
 
 .playlistLabel {
+    font-family: 'Bebas Neue';
     color: #e92748;
+    padding: 0.8%;
+    border: solid #e92748;
 }
 
 
@@ -218,7 +251,7 @@ nav:hover {
     color: rgb(39, 255, 6);
     cursor: pointer;
 }
-#trashBtn:hover {
+#playlistsBtn:hover {
     color: rgb(179, 0, 255);
     cursor: pointer;
 }
@@ -310,6 +343,8 @@ iframe {
 }
 #listBuilderH1 {
     color: white;
+    font-family: 'Bebas Neue';
+    font-size: 4rem;
 }
 #listNameTxt {
     background-color: #1a1a2e;
@@ -360,24 +395,30 @@ iframe {
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    width: 100%;
+
 }
 @media (max-width: 425px) {
     #searchResultsDiv {
     display: grid;
     position: absolute;
-    top: 45%;
+    left: 0px;
+    top: 35%;
     margin: 0px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    }
-    #mainContainer {
-        width: 100%;
-        margin: 0 auto;
+    width: 100%;
     }
 }
-
+.addMoviePoster {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
 
 /*==================================Playlist Creator End========================================*/
 
@@ -531,6 +572,7 @@ iframe {
 /* ---------------------LISTS PAGE------------------------ */
 .savedPlaylist {
     display: flex;
+    padding-top: 0.2rem;
 }
 
 /*-----------------------CREATE LISTS PAGE-----------------*/
@@ -595,4 +637,3 @@ iframe {
 #addFilmsToListBtn:hover {
     background: #f50040;
 }
-

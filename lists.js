@@ -2,7 +2,7 @@
 import { signIn, signUp } from "./authentication/auth.js"
 firebase.auth().onAuthStateChanged(function(user) {
    if (user) {
-      btn.style.display = "none"
+      btn.style.display = "block"
    }
    else {
       logout.style.display = "none"
@@ -85,7 +85,6 @@ function createPlaylist(playlistArray, playlistName) {
                <i id="watchedBtn" class="far fa-eye"></i>
                <i id="favoritesBtn" class="fas fa-heart"></i>
                <i id="watchLaterBtn" class="fas fa-plus"></i>
-               <i id="trashBtn" class="fas fa-trash-alt"></i>
                </i>
            </div>
        </div>
@@ -117,7 +116,8 @@ const displayLists = async (listype, playlistName, userId) => {
             <i id="watchedBtn" class="far fa-eye"></i>
             <i id="favoritesBtn" class="fas fa-heart"></i>
             <i id="watchLaterBtn" class="fas fa-plus"></i>
-            <i id="trashBtn" class="fas fa-trash-alt"></i>
+            <i id="watchLaterBtn" class="fas fa-trash-alt"></i>
+            </i>
         </div>
     </div>`
     
@@ -176,6 +176,7 @@ document.onclick = function (e) {
     // console.log(e.target.id)
     if (target.tagName.toLowerCase() === "img") {
         const movieContent = target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+        console.log(movieContent)
         movieContent.classList.add("content-display")
         const id = target.id
 
@@ -200,39 +201,6 @@ document.onclick = function (e) {
 
                 movieContent.innerHTML = movieInfo
                 movieContent.classList.add('content-display')
-
-                createIframeContainer(id)
-
-                function createIframeContainer(movieId) {
-                   fetch(
-                      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0310c1a97f001b72c2466fdfc9e4f305`
-                   )
-                      .then((res) => res.json())
-                      .then((data) => {
-                         let videoArray = data.results
-                         const length =
-                            videoArray.length > 1 ? 1 : videoArray.length
-                         const iframeContainer = document.createElement("div")
-    
-                         for (let i = 0; i < length; i++) {
-                            const video = videoArray[i]
-                            const iframe = createIframe(video)
-                            iframeContainer.appendChild(iframe)
-                         }
-                         movieContent.appendChild(iframeContainer)
-                      })
-                }
-    
-                function createIframe(video) {
-                   const iframe = document.createElement("iframe")
-                   iframe.src = `https://www.youtube.com/embed/${video.key}`
-                   iframe.width = 325
-                   iframe.height = 275
-                   iframe.allowFullscreen = true
-                   iframe.id = "iframeVideo"
-    
-                   return iframe
-                }
 
                 const closeContentBtn = document.getElementById("closeContent")
                 closeContentBtn.addEventListener("click", function () {

@@ -367,12 +367,17 @@ iframe {
     color: white;
     font-family: 'Bebas Neue';
     font-size: 4rem;
+    border: 2px solid;
+    padding: 10px;
+    width: 70%;
+    text-align: center;
 }
 #listNameTxt {
     background-color: #1a1a2e;
     color: white;
     text-align: center;
     border: 3px solid white;
+    font-size: 1.2em;
 }
 #listDescrTxt {
     background-color: #1a1a2e;
@@ -390,6 +395,7 @@ iframe {
     align-items: center;
     width: 100%;
     margin: 0 auto;
+    font-size: 1.2em
 }
 #addFilmsSearchTxt {
     background-color: #1a1a2e;
@@ -601,6 +607,7 @@ iframe {
 
 #listBuilderH1 {
     color: #f50040;
+    margin-bottom: 25px;
 }
 
 #listNameTxt {

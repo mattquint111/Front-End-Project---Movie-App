@@ -360,30 +360,24 @@ iframe {
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    width: 100%;
-
 }
 @media (max-width: 425px) {
     #searchResultsDiv {
     display: grid;
     position: absolute;
-    left: 0px;
-    top: 35%;
+    top: 45%;
     margin: 0px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    width: 100%;
+    }
+    #mainContainer {
+        width: 100%;
+        margin: 0 auto;
     }
 }
-.addMoviePoster {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
+
 
 /*==================================Playlist Creator End========================================*/
 

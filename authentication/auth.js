@@ -31,6 +31,7 @@ const signUpForm = document.getElementById('signup-form')
                     watched: [],
                     favorites: [],
                     watchLater: [], 
+                    playlistsKeys: []
                 }
                 db.collection('users').doc(user.uid).set(userObject)
                 .then(function(docRef) {

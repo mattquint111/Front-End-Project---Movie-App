@@ -68,10 +68,10 @@ addFilmsSearchBtn.addEventListener("click", function () {
 })
 
 // fetches movies added to tempArr and puts them inside the collection under listName
-addFilmsToListBtn.addEventListener("click", function () {
+addFilmsToListBtn.addEventListener("click", async function () {
    console.log(listName)
    for (let i = 0; i < tempArr.length; i++) {
-      fetch(
+      await fetch(
          `https://api.themoviedb.org/3/movie/${tempArr[i]}?api_key=0310c1a97f001b72c2466fdfc9e4f305`
       )
          .then((res) => res.json())
@@ -95,6 +95,7 @@ addFilmsToListBtn.addEventListener("click", function () {
             })
          })
    }
+   window.location.href = "creator.html"
 })
 
 //--------------Login modal-------------------------

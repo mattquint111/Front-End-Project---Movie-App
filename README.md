@@ -12,23 +12,18 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use. Your editor may have an extension availabale. VSCode does for sure. You can add badges like ordinary snippets by pressing a few keys.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[https://github.com/luigisiops] [https://github.com/ChapmanChappelle]
+
 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/mattquint111/Front-End-Project---Movie-App">
   </a>
 
-  <h3 align="center">DigitalCrafts JavaScript</h3><!-- YOUR_TITLE-->
+  <h3 align="center">Flix Lists</h3><!-- YOUR_TITLE-->
     
   <p align="center"><!-- YOUR_SHORT_DESCRIPTION -->
 DigitalCrafts - Front End Project - Movie App
@@ -52,12 +47,9 @@ DigitalCrafts - Front End Project - Movie App
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
 * [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
@@ -65,14 +57,18 @@ DigitalCrafts - Front End Project - Movie App
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The application lets a user create "playlists" of movies and dynamically storing the playlist info inside a firebase firestore. 
+The homepage shows popular predetermined movie collections recieved from the Movie Database API
+They can view other popular lists on the homepage by search, with options to add to favorites, watch later, ect. 
 
 
 
 ### Built With
-* [JavaScript](https://javascript.com)
+* [JavaScript]
 * [HTML]
 * [CSS]
 * [Firebase] (https://firebase.google.com/)
+* [Movie Database API] (https://developers.themoviedb.org/3/getting-started/introduction)
 
 <!-- 
 * []() not the above example of how to link in Markdown.
@@ -89,25 +85,11 @@ To get a local copy of the app clone the files from the repository and open the 
 ```sh
 git clone https://github.com/mattquint111/Front-End-Project---Movie-App
 ```
-2. You need an API Key from [https://www.themoviedb.org/). Then add your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
+2. deploy with live server
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Project-Demo](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-Detail what you did as you do it. Add more info each time a feature is completed or a new feature is added/removed. You can also let people know of any known issues or new features by just linking to your:  [open issues](https://github.com/github_username/repo_name/issues). 
-
+![Alt Text](/images/homepage scroll.gif)
 
 
 <!-- CONTRIBUTING -->
@@ -124,7 +106,9 @@ Either provide a [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contri
 <!-- CONTACT -->
 ## Contact
 
-Matthew Quint - https://github.com/mattquint111 - www.linkedin.com/in/mattquint111 - mattquint111@gmail.com
+* Matthew Quint - https://github.com/mattquint111 - www.linkedin.com/in/mattquint111 - mattquint111@gmail.com
+* Chapman Chappelle - https://github.com/ChapmanChappelle - https://www.linkedin.com/in/chapman-chappelle-6a84911b7/ - chapman.chappelle@gmail.com
+* Luigi Siopongco - https://github.com/luigisiops - https://www.linkedin.com/in/luigi-siopongco-639914139 - Lsiopongco54@gmail.com
 
 
 Project Link: https://github.com/mattquint111/Front-End-Project---Movie-App
@@ -138,9 +122,6 @@ Project Link: https://github.com/mattquint111/Front-End-Project---Movie-App
     [NathanNoSudo](https://github.com/NathanNoSudo)
  - **Othneildrew**  -
     [OthneilDrew](https://github.com/othneildrew)
-* []()
-* []()
-* []()
 
 
 

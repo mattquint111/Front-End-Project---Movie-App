@@ -345,6 +345,7 @@ iframe {
 }
 
 /*==================================Playlist Creator Start======================================*/
+/* Playlist Creator */
 #listBuilderInfoDiv {
     width: 80%;
     margin: 0 auto;
@@ -363,8 +364,6 @@ iframe {
 }
 #listBuilderH1 {
     color: white;
-    font-family: 'Bebas Neue';
-    font-size: 4rem;
 }
 #listNameTxt {
     background-color: #1a1a2e;
@@ -386,14 +385,12 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin: 0 auto;
 }
 #addFilmsSearchTxt {
     background-color: #1a1a2e;
     color:white;
     height: 70px;
-    width: 100%;
+    width: 150px;
     text-align: center;
     border: 3px solid white;
     margin-right: 2%;
@@ -410,35 +407,15 @@ iframe {
     text-align: center;
 }
 #searchResultsDiv {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    width: 100%;
-
+    display: flex;
+    flex-direction: row;
 }
-@media (max-width: 425px) {
-    #searchResultsDiv {
-    display: grid;
-    position: absolute;
-    left: 0px;
-    top: 35%;
-    margin: 0px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    width: 100%;
-    }
+#addMoviePoster {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
 }
-.addMoviePoster {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
+/* Playlist Creator */
 
 /*==================================Playlist Creator End========================================*/
 

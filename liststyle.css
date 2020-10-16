@@ -13,7 +13,10 @@ nav {
     background-color: #16213e;
 }
 nav a{
-    color: #f50040;
+    color: white;
+}
+.navbar{
+    height: 4.1rem;
 }
 
 
@@ -34,12 +37,10 @@ button:hover {
     border: 2px solid white;
 }
 
-.navbar {
-    font-size: 1.2em;
-}
+
 
 #closeSignIn {
-    width: 30px;
+    width: 20px;
 }
 
 #menubutton{
@@ -72,7 +73,31 @@ nav:hover {
     box-shadow: none;
     color: white
 }
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
 
+.nav-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbarText{
+    margin-top: 1rem;
+}
+#logo{
+    color: #f50040;
+    font-family: 'Bebas Neue';
+    font-size: 2rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+
+}
+/*==========================================================*/
 .fa-bars {
     color: #f50040;
 }
@@ -151,7 +176,10 @@ nav:hover {
 }
 
 .playlistLabel {
+    font-family: 'Bebas Neue';
     color: #e92748;
+    padding: 0.8%;
+    border: solid #e92748;
 }
 
 
@@ -307,8 +335,10 @@ iframe {
     color: black;
     margin: 3%;
 }
+
 #listBuilderH1 {
     color: white;
+   
 }
 #listNameTxt {
     background-color: #1a1a2e;
@@ -511,5 +541,6 @@ iframe {
 /* ---------------------LISTS PAGE------------------------ */
 .savedPlaylist {
     display: flex;
+    padding-top: 0.2rem;
 }
 

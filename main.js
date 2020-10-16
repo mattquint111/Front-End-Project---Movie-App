@@ -19,9 +19,9 @@ if (submitButton) {
       const movieName = searchInput.value
       const searchUrl = searchMovieUrl + movieName
       createPlaylist(searchUrl, "searched")
-      searchInput.value = ""
    })
 }
+
 
 // create homepage playlists
 createPlaylist(nowPlayingUrl, "nowPlaying")
@@ -49,7 +49,8 @@ function createPlaylist(playlistUrl, playlistName) {
                 <div class="listButtons">
                     <i id="watchedBtn" class="far fa-eye"></i>
                     <i id="favoritesBtn" class="fas fa-heart"></i>
-                    <i id="watchLaterBtn" class="fas fa-plus"></i>                    
+                    <i id="watchLaterBtn" class="fas fa-plus"></i>
+                    </i>
                 </div>
             </div>
             `
@@ -167,17 +168,17 @@ document.onclick = function (e) {
             function createIframe(video) {
                const iframe = document.createElement("iframe")
                iframe.src = `https://www.youtube.com/embed/${video.key}`
-               iframe.width = 325
-               iframe.height = 275
+               iframe.width = 624
+               iframe.height = 350
                iframe.allowFullscreen = true
                iframe.id = "iframeVideo"
 
                return iframe
             }
-
             const closeContentBtn = document.getElementById("closeContent")
             closeContentBtn.addEventListener("click", function () {
-               this.parentElement.classList.remove("content-display")
+               console.log(this.parentElement)
+               this.parentElement.classList.remove('content-display')
             })
          })
    }

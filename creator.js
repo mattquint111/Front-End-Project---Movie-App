@@ -1,6 +1,5 @@
 import { signIn, signUp } from "./authentication/auth.js"
 
-
 // initial variables
 const apiKey = "0310c1a97f001b72c2466fdfc9e4f305"
 const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
@@ -82,6 +81,7 @@ addFilmsToListBtn.addEventListener("click", function () {
             })
          })
    }
+   window.location.href = "creator.html"
 })
 
 //--------------Login modal-------------------------
@@ -95,6 +95,8 @@ var span = document.getElementsByClassName("close")[0]
 
 btn.onclick = function () {
    modal.style.display = "block"
+   btn.style.display = "none"
+   logout.style.display = "block"
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -108,13 +110,14 @@ window.onclick = function (event) {
       modal.style.display = "none"
    }
 }
-
 //----------Authentication stuff -----------------
 const logout = document.getElementById("logout")
 logout.addEventListener("click", async (e) => {
    e.preventDefault()
    await auth.signOut()
    console.log("user signed out")
+   btn.style.display = "block"
+   logout.style.display = "none"
 })
 
 const loginForm = document.getElementById("login-button")
@@ -122,16 +125,8 @@ const signUpForm = document.getElementById("signup-button")
 const usernameInput = document.getElementById("username-input")
 const passwordInput = document.getElementById("password-input")
 
-loginForm.addEventListener("click", () => {
-   signIn()
-   usernameInput.value = ""
-   passwordInput.value = ""
-})
-signUpForm.addEventListener("click", () => {
-   signUp()
-   usernameInput.value = ""
-   passwordInput.value = ""
-})
+loginForm.addEventListener("click", signIn)
+signUpForm.addEventListener("click", signUp)
 
 document.onclick = function (e) {
    const target = e.target

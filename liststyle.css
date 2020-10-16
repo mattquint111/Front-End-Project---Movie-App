@@ -419,6 +419,9 @@ iframe {
         margin-top: 0px;
         margin-bottom: 0px;
     }
+    #logout {
+        display: none;
+    }
     
     #loginContainer {
         display: flex;

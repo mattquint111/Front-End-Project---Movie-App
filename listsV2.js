@@ -141,7 +141,7 @@ function createPlaylist(playlistArray, playlistName) {
  }
  }
 
- //--------------Login modal-------------------------
+//--------------Login modal-------------------------
 var modal = document.getElementById("myModal")
 
 // Get the button that opens the modal
@@ -152,6 +152,8 @@ var span = document.getElementsByClassName("close")[0]
 
 btn.onclick = function () {
    modal.style.display = "block"
+   btn.style.display = "none"
+   logout.style.display = "block"
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -171,6 +173,8 @@ logout.addEventListener("click", async (e) => {
    e.preventDefault()
    await auth.signOut()
    console.log("user signed out")
+   btn.style.display = "block"
+   logout.style.display = "none"
 })
 
 const loginForm = document.getElementById("login-button")

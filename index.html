@@ -3,115 +3,172 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie App</title>
-<<<<<<< HEAD:index.html
-=======
+    <title>Flix Lists</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
->>>>>>> 9b174f4ac6d6f983c6e0b4f6a40ed4d3435fa8e3:index_v2.html
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://kit.fontawesome.com/bb485f7aec.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="container">
-      <div class="navbar navbar-expand-lg fixed-top">
-        <a class="navbar-brand" href="#">Home</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        ></button>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-4">
-            <li class="nav-item">
-              <a class="nav-link" data-value="about" href="#">Playlists</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="portfolio" href="#">Favorites</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="blog" href="#">Watch Later</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="team" href="#">Discover</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="contact" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
+    <!-- Top Navigation Menu -->
+    <nav class="navbar navbar-expand-lg  ">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars" id='menuButton'></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"
+              ><p id = "logo"class="navbarText">|Flix-Lists|</p><span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><p class="navbarText">Home</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lists.html"><p class="navbarText">Lists</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="creator.html"><p class="navbarText" >Create Playlists</p></a>
+          </li>
+        </ul>
       </div>
+      <div class="loginButtons">
+        <button id="signIn" class="button" type="submit">
+        Sign In
+      </button>
+      <button id="logout" class="button" type="submit">
+        Log Out
+      </button>
+      </div>
+      
+    </nav>
+
+  <div class='mainContainer'>
+
+    <div class="searchContainer">
+
+      <div class="searchBar">
+        <input type='text' id='inputValue' placeholder="Search for a movie..." autocorrect="off" autofill="off"
+          autocomplete="off" spellcheck="false">
+        <button type='submit' id="submitButton" value='Submit'>Submit</button>
+      </div>
+
+      <div class="playlist" id="searchContainer">
+        <div class="searchPlaylistContent" id='searchedList'></div>
+      </div>
+      <div class="movieContent" id="searchedContent"></div>
+
     </div>
 
     <div class="playlistsContainer">
 
       <div class="playlist">
         <h1 class="playlistLabel">Now Playing</h1>
-        <div class="playlistContent" id='nowPlayingList'></div>
+        <div class="playlistContent" id="nowPlayingList"></div>
       </div>
-      <div class='movieContent' id="nowPlayingContent"></div>
-
+          <div class="movieContent" id="nowPlayingContent"></div>
+      
 
       <div class="playlist">
         <h1 class="playlistLabel">Popular</h1>
-        <div class="playlistContent" id='popularList'></div>
+        <div class="playlistContent" id="popularList"></div>
       </div>
-      <div class='movieContent' id="popularContent"></div>
-
+              <div class="movieContent" id="popularContent"></div>
 
       <div class="playlist">
         <h1 class="playlistLabel">Top Rated</h1>
-        <div class="playlistContent" id='topRatedList'></div>
+        <div class="playlistContent" id="topRatedList"></div>
       </div>
-      <div class='movieContent' id="topRatedContent"></div>
+      <div class="movieContent" id="topRatedContent"></div>
 
       <div class="playlist">
         <h1 class="playlistLabel">Upcoming</h1>
-        <div class="playlistContent" id='upcomingList'></div>
+        <div class="playlistContent" id="upcomingList"></div>
       </div>
-      <div class='movieContent' id="upcomingContent"></div>
-
+      <div class="movieContent" id="upcomingContent"></div>
     </div>
 
+  </div>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" id="closeSignIn">&times;</span>
+        <div id="web-app">
+          <div id="loginContainer">
+            <form id="login-form">
+              <div class="inputs">
+                <label for="username">Username: </label>
+                <input class=login-input id="username-input" type="email" required>
+                <label for="password">Password: </label>
+                <input class=login-input id="password-input" type="password" required>
+              </div>
+              
+              <div class='loginButtons'>
+                <button class="loginButton"id="login-button">Login</button>
+                <button class="loginButton" id="signup-button">Sign up</button>
+              </div>
+              
+              <p id = "not-a-user">Not a user? Join today!</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------------Firebase Scripts BELOW------------------------------------>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
     <script>
-    var firebaseConfig = {
-    apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
-    authDomain: "movieapp-3365a.firebaseapp.com",
-    databaseURL: "https://movieapp-3365a.firebaseio.com",
-    projectId: "movieapp-3365a",
-    storageBucket: "movieapp-3365a.appspot.com",
-    messagingSenderId: "845732737286",
-    appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
-    measurementId: "G-HTVFL47E1X"
-  }
-    firebase.initializeApp(firebaseConfig);
+      var firebaseConfig = {
+        apiKey: "AIzaSyBmZkLr6Op7gU2LE7OcnfwQIf9k3kKMbfE",
+        authDomain: "movieapp-3365a.firebaseapp.com",
+        databaseURL: "https://movieapp-3365a.firebaseio.com",
+        projectId: "movieapp-3365a",
+        storageBucket: "movieapp-3365a.appspot.com",
+        messagingSenderId: "845732737286",
+        appId: "1:845732737286:web:570b7ceb5c92e44b352e87",
+        measurementId: "G-HTVFL47E1X",
+      };
+      firebase.initializeApp(firebaseConfig);
+  
+      const auth = firebase.auth();
+      var db = firebase.firestore()
+  </script>
 
-    const auth = firebase.auth()</script>
+  <script type="module" src="main.js"></script>
 
-    
-    <script src="main.js"></script>
-  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

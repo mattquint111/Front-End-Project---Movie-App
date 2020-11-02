@@ -78,10 +78,12 @@ They can view other popular lists on the homepage by search, with options to add
 
 <img align="center" src="images/Screen Shot 2020-11-02 at 3.07.59 PM.png" width=800 height=600>
 Users have the ability to register a username and password to login and start creating and saving movie lists.
-
+<br />
 <img align="center" src="images/Screen Shot 2020-11-02 at 3.08.43 PM.png" width=800 height=600>
 The homepage automatically updates to show movies in the categories of now playing, popular, top rated and upcoming.
-
+<br />
+<img align="center" src="images/Screen Shot 2020-11-02 at 3.21.04 PM.png" width=800 height=600>
+Users can search for movies by title or keyword.
 
 
 <!-- GETTING STARTED -->

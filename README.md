@@ -47,6 +47,7 @@ DigitalCrafts - Front End Project - Movie App
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+* [Videos and Screenshots](#videos-and-screenshots)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
 * [Usage](#usage)
@@ -63,7 +64,6 @@ The homepage shows popular predetermined movie collections recieved from the Mov
 They can view other popular lists on the homepage by search, with options to add to favorites, watch later, ect. 
 
 
-
 ### Built With
 * [JavaScript]
 * [HTML]
@@ -74,6 +74,9 @@ They can view other popular lists on the homepage by search, with options to add
 <!-- 
 * []() not the above example of how to link in Markdown.
 -->
+## Videos and Screenshots
+
+
 
 
 <!-- GETTING STARTED -->

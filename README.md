@@ -76,6 +76,8 @@ They can view other popular lists on the homepage by search, with options to add
 -->
 ## Videos and Screenshots
 
+<img align="center" src="images/Screen Shot 2020-11-02 at 3.07.59 PM.png" width=800 height=600>
+
 
 
 

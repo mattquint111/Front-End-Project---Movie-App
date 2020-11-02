@@ -23,6 +23,8 @@
   <a href="https://github.com/mattquint111/Front-End-Project---Movie-App">
   </a>
 
+  <img src="images/Screen Shot 2020-11-02 at 2.57.28 PM.png
+" width=290 height=23>
   <h3 align="center">Flix Lists</h3><!-- YOUR_TITLE-->
     
   <p align="center"><!-- YOUR_SHORT_DESCRIPTION -->

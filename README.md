@@ -24,8 +24,7 @@
   </a>
 
   
-  <h3 align="center">Flix Lists</h3><!-- YOUR_TITLE-->
-  <img src="images/Screen Shot 2020-11-02 at 2.57.28 PM.png" width=290 height=230>
+  <img align="center" src="images/Screen Shot 2020-11-02 at 2.57.28 PM.png" width=290 height=230>
     
   <p align="center"><!-- YOUR_SHORT_DESCRIPTION -->
 DigitalCrafts - Front End Project - Movie App
